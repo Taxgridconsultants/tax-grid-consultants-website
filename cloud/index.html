@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>TGC Practice Manager — Modern Workspace</title>
+    <meta name="tgc-build" content="5.10" />
+    <link rel="stylesheet" href="/styles.css?v=5.10" />
+    <link rel="stylesheet" href="/cloud/cloud.css?v=5.10" />
+  </head>
+  <body>
+    <section class="cloud-login" id="loginScreen">
+      <div class="login-card">
+        <img
+          src="/assets/tgc-logo-transparent.png"
+          alt="Tax Grid Consultants"
+        />
+        <span class="eyebrow">SECURE PRACTICE ACCESS</span>
+        <h1>Welcome back</h1>
+        <p>Sign in to the TGC Practice Management Suite.</p>
+        <form id="loginForm">
+          <label>Email</label
+          ><input
+            id="loginEmail"
+            type="email"
+            value="info@taxgridconsultants.com"
+            autocomplete="email"
+            required
+          /><label>Password</label>
+          <div class="password-field">
+            <input
+              id="loginPassword"
+              type="password"
+              autocomplete="current-password"
+              required
+            /><button type="button" id="togglePassword">Show</button>
+          </div>
+          <button class="primary-button" id="loginButton">
+            Sign in securely</button
+          ><button class="forgot-button" type="button" id="forgotPassword">
+            Forgot password?
+          </button>
+          <div class="login-error" id="loginError"></div>
+        </form>
+        <small>Authorised Tax Grid Consultants users only</small>
+      </div>
+    </section>
+    <section class="cloud-login hidden" id="passwordScreen">
+      <div class="login-card password-card">
+        <img
+          src="/assets/tgc-logo-transparent.png"
+          alt="Tax Grid Consultants"
+        /><span class="eyebrow">SECURE ACCOUNT</span>
+        <h1>Change your password</h1>
+        <p>
+          Use at least 12 characters with uppercase, lowercase, a number and a
+          symbol.
+        </p>
+        <form id="passwordForm">
+          <label>New password</label
+          ><input
+            id="newPassword"
+            type="password"
+            autocomplete="new-password"
+            minlength="12"
+            required
+          /><label>Confirm new password</label
+          ><input
+            id="confirmPassword"
+            type="password"
+            autocomplete="new-password"
+            minlength="12"
+            required
+          /><button class="primary-button">Save new password</button
+          ><button class="forgot-button" type="button" id="cancelPassword">
+            Cancel
+          </button>
+          <div class="login-error" id="passwordError"></div>
+        </form>
+      </div>
+    </section>
+    <section class="cloud-login hidden" id="mfaScreen">
+      <div class="login-card password-card">
+        <img
+          src="/assets/tgc-logo-transparent.png"
+          alt="Tax Grid Consultants"
+        /><span class="eyebrow">TWO-STEP VERIFICATION</span>
+        <h1 id="mfaTitle">Verify your identity</h1>
+        <p id="mfaText">
+          Enter the current six-digit code from your authenticator app.
+        </p>
+        <div id="mfaQr" class="mfa-qr hidden"></div>
+        <form id="mfaForm">
+          <label>Verification code</label
+          ><input
+            id="mfaCode"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            pattern="[0-9]{6}"
+            maxlength="6"
+            required
+          /><button class="primary-button" id="mfaButton">
+            Verify and continue</button
+          ><button class="forgot-button" type="button" id="mfaSignOut">
+            Use another account
+          </button>
+          <div class="login-error" id="mfaError"></div>
+        </form>
+      </div>
+    </section>
+    <div class="app-shell hidden" id="cloudShell">
+      <aside class="sidebar">
+        <div class="brand brand-official brand-modern" aria-label="Tax Grid Consultants Practice Manager">
+          <img class="brand-logo brand-logo-colour" src="/assets/tgc-logo-nav.png" alt="Tax Grid Consultants Limited" />
+          <img class="brand-logo brand-logo-monochrome" src="/assets/tgc-logo-monochrome.png" alt="Tax Grid Consultants Limited monochrome" />
+        </div>
+        <div class="nav-caption">Workspace</div>
+        <nav id="cloudNav">
+          <button class="nav-item active" data-view="dashboard" data-label="Dashboard"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg></span><span>Dashboard</span></button>
+          <button class="nav-item" data-view="clients" data-label="Clients"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 20v-1.5a4.5 4.5 0 0 0-4.5-4.5h-4A4.5 4.5 0 0 0 3 18.5V20M9.5 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM17 11a3 3 0 1 0 0-6M19 20v-1a4 4 0 0 0-3-3.87"/></svg></span><span>Clients</span></button>
+          <button class="nav-item" data-view="work" data-label="Work"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><span>Work</span></button>
+          <button class="nav-item" data-view="documents" data-label="Documents"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span>Documents</span></button>
+          <button class="nav-item" data-view="billing" data-label="Billing"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3zM3 10h18M7 15h3"/></svg></span><span>Billing</span></button>
+          <div class="nav-caption nav-caption-secondary">Manage</div>
+          <button class="nav-item hidden" id="usersNav" data-view="users" data-label="Team"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM19 8v6M22 11h-6"/></svg></span><span>Team</span></button>
+          <button class="nav-item" id="settingsNav" data-view="settings" data-label="Settings"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.1A1.7 1.7 0 0 0 8.5 19.3a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2V9.6h.1A1.7 1.7 0 0 0 3.7 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 8 4.1a1.7 1.7 0 0 0 1-.6A1.7 1.7 0 0 0 9.4 2H13v.1A1.7 1.7 0 0 0 14.1 3.7a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 18.5 8c.1.4.3.7.6 1 .3.3.7.5 1.1.5h.1V13h-.1a1.7 1.7 0 0 0-1.6 1.1c-.1.3-.1.6-.2.9Z"/></svg></span><span>Settings</span></button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="user-mini">
+            <div class="avatar" id="userAvatar">YJ</div>
+            <div><strong id="userName">User</strong><span id="userRole">Loading…</span></div>
+            <div class="user-mini-actions"><button id="signOut" type="button" aria-label="Sign out" title="Sign out"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3M14 3h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5"/></svg></button></div>
+          </div>
+        </div>
+      </aside>
+      <main>
+        <header class="topbar">
+          <button class="icon-button menu-button" id="menuButton" aria-label="Open navigation">☰</button>
+          <button class="topbar-icon desktop-sidebar-toggle" id="sidebarToggle" type="button" aria-label="Collapse sidebar" title="Collapse sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 9l-3 3 3 3"/></svg></button>
+          <div class="global-search-wrap">
+            <div class="search">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input id="globalSearch" placeholder="Search clients, BRN or filings…" aria-label="Search clients, BRN or filings" autocomplete="off" />
+            </div>
+            <div class="global-search-results hidden" id="globalSearchResults"></div>
+          </div>
+          <div class="top-actions">
+            <div class="notification-wrap">
+              <button class="topbar-icon" id="notificationButton" type="button" aria-label="Open notifications" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span class="notification-count hidden" id="notificationCount">0</span></button>
+              <div class="notification-menu hidden" id="notificationMenu" role="dialog" aria-label="Notifications"></div>
+            </div>
+            <div class="quick-add-wrap">
+              <button class="quick-add hidden" id="quickAdd" type="button"><span>＋</span> Create</button>
+              <div class="quick-add-menu hidden" id="quickAddMenu">
+                <button type="button" id="quickAddClient"><strong>New client</strong><small>Add the client and assign obligations</small></button>
+                <button type="button" id="quickAddWork"><strong>New job</strong><small>Create one-off work not generated automatically</small></button>
+                <div class="quick-add-note">Tasks and checklists belong inside a job.</div>
+              </div>
+            </div>
+            <button class="topbar-icon theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode"><svg class="theme-icon moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A8.4 8.4 0 0 1 9.7 3.5 8.5 8.5 0 1 0 20.5 14.3Z"/></svg><svg class="theme-icon sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.41M17.66 6.34l1.41-1.41"/></svg></button>
+          </div>
+        </header>
+        <div id="cloudRoot"></div>
+      </main>
+    </div>
+    <script src="/cloud/supabase.js?v=5.10"></script>
+    <script src="/cloud/config.js?v=5.10"></script>
+    <script src="/cloud/cloud-app.js?v=5.10"></script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Activate your Tax Grid Consultants account</title>
+  <link rel="icon" href="/assets/tgc-logo-monochrome.png" type="image/png">
+  <link rel="stylesheet" href="/auth/confirm/auth-confirm.css">
+</head>
+<body>
+  <main class="activation-shell">
+    <section class="activation-card" aria-labelledby="activationTitle">
+      <div class="brand-panel">
+        <img src="/assets/tgc-logo-monochrome.png" alt="Tax Grid Consultants Limited">
+        <span>Secure staff activation</span>
+      </div>
+
+      <div class="activation-content">
+        <p class="eyebrow">PRIVATE ACCOUNT SETUP</p>
+        <h1 id="activationTitle">Activate your Tax Grid Consultants Practice Manager access</h1>
+        <p id="activationIntro" class="intro">
+          Verifying your secure invitation…
+        </p>
+
+        <div id="activationStatus" class="status-card" role="status" aria-live="polite">
+          <span class="spinner" aria-hidden="true"></span>
+          <span>Checking invitation</span>
+        </div>
+
+        <form id="passwordForm" class="password-form" hidden novalidate>
+          <label>
+            Create password
+            <input id="password" type="password" autocomplete="new-password" minlength="12" required>
+          </label>
+          <label>
+            Confirm password
+            <input id="confirmPassword" type="password" autocomplete="new-password" minlength="12" required>
+          </label>
+          <p class="password-note">Use at least 12 characters, including a mix of letters, numbers and symbols.</p>
+          <button id="activateButton" type="submit">Activate account</button>
+        </form>
+
+        <div id="activationError" class="error-card" hidden></div>
+
+        <p class="help-text">
+          Need assistance? Contact
+          <a href="mailto:info@taxgridconsultants.com">info@taxgridconsultants.com</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/cloud/supabase.js"></script>
+  <script src="/cloud/config.js"></script>
+  <script src="/auth/confirm/auth-confirm.js"></script>
+</body>
+</html>

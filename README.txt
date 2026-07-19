@@ -1,18 +1,13 @@
-TAX GRID CONSULTANTS — PUBLIC WEBSITE V4
+TGC PRACTICE MANAGER v5.12 — FULL NAME & SECURITY REVIEW
 
-This revision was reviewed from a first-time visitor and customer-conversion perspective.
+Adds:
+- Full “Tax Grid Consultants” name throughout invitation and activation flow
+- Revised security notice focused on forwarding, passwords and verification codes
+- Existing branded activation page retained
+- No database migration required
 
-Key changes:
-- Clearer positioning as a modern accounting firm, not a software product
-- Situation-led “Start here” section for new businesses, switching accountants, overdue work and management visibility
-- Stronger trust rail and simpler customer journey
-- Official TGC logo assets retained
-- Consultation form can prepare either a WhatsApp message or email
-- Mobile sticky call and WhatsApp actions
-- Refined responsive layout, accessibility and SEO metadata
+Supabase Invite User email button should point to:
+{{ .SiteURL }}/auth/confirm/?token_hash={{ .TokenHash }}&type=invite
 
-PREVIEW
-Open index.html in a modern browser.
-
-PRODUCTION NOTE
-The WhatsApp and email actions work without a backend. A server-side form can be added later if TGC wants enquiries stored in a CRM or mailbox automatically.
+Ensure Authentication > URL Configuration > Site URL is:
+https://practice.taxgridconsultants.com
