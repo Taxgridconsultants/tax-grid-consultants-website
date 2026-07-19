@@ -1,0 +1,9 @@
+1. Extract this ZIP.
+2. Open the existing GitHub repository: tax-grid-consultants-website.
+3. Choose Add file → Upload files.
+4. Upload every file and the assets folder from the extracted package.
+5. Commit directly to main with:
+   Deploy final Tax Grid Consultants website V9
+6. Vercel will deploy the commit automatically.
+
+Verify the live Vercel deployment before connecting or switching the official domain.

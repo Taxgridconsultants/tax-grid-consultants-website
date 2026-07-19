@@ -1,34 +1,28 @@
-TAX GRID CONSULTANTS — INTERNATIONAL WEBSITE V6
+TAX GRID CONSULTANTS — FINAL PRODUCTION WEBSITE V9
 
-A substantive multi-page rebuild of the public TGC website.
+This package is prepared for deployment to the existing GitHub repository and Vercel project.
 
-Pages:
-- index.html — focused international-facing homepage
-- services.html — detailed connected services
-- international.html — remote and cross-border collaboration
-- xero.html — Xero Partner and cloud accounting support
-- about.html — firm positioning and registered information
-- contact.html — consultation form with WhatsApp/email actions
-- privacy.html / terms.html / 404.html
+FINAL POLISH APPLIED
+- Rebuilt the homepage with solid, readable typography
+- Removed experimental outlined hero text
+- Simplified the capability visual for desktop and mobile
+- Increased header logo, navigation and body-text readability
+- Rebalanced the service presentation into four equal outcome-led areas
+- Rebuilt the international section with wider typography and clearer examples
+- Expanded the Xero Partner presentation using the official supplied Xero logo
+- Replaced the generic three-step process with a Tax Grid Consultants-specific four-step workflow
+- Improved footer logo visibility and contact readability
+- Removed remaining visible “TGC” shorthand from the form and manifest
+- Added active-page navigation and accessibility focus states
+- Preserved SEO, sitemap, legal pages, security headers and the branded 404 page
 
-Major changes:
-- Removed repeated explanations and multiple dashboard-style sections
-- Repositioned TGC for local and international clients
-- Limited Mauritius-specific messaging to relevant sections
-- Created original TGC visual language using grids, orbit systems and precision lines
-- Added a dedicated Xero Partner page and homepage partner section
-- Added production SEO, sitemap, manifest, security headers and OG cover
-- Preserved the official TGC logos and favicon
+DEPLOYMENT
+1. Extract this ZIP.
+2. Open the existing GitHub repository: tax-grid-consultants-website.
+3. Choose Add file → Upload files.
+4. Upload every file and the assets folder from the extracted package.
+5. Commit directly to main with:
+   Deploy final Tax Grid Consultants website V9
+6. Vercel will deploy the commit automatically.
 
-XERO ASSET:
-V7 uses the official high-resolution Xero logo supplied by TGC in the uploaded Xero asset pack. The website states “Xero Partner” in text beside the official logo. The supplied ZIP did not contain a separate partner-level badge.
-
-DEPLOYMENT:
-Upload all files and the assets folder to the root of the existing GitHub repository. Commit to main; Vercel will deploy automatically.
-
-
-V7 UPDATE:
-- Integrated the official Xero logo on the homepage and dedicated Xero page
-- Reduced repeated Xero wording in the homepage hero
-- Preserved the official logo artwork and added clear-space through layout styling
-- Clarified that the supplied logo is not itself a partner-level badge
+Verify the live Vercel deployment before connecting or switching the official domain.

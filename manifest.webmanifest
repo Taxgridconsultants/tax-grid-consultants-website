@@ -1,7 +1,7 @@
 {
   "name": "Tax Grid Consultants Limited",
-  "short_name": "TGC",
-  "description": "Accounting, tax, payroll and advisory support.",
+  "short_name": "Tax Grid",
+  "description": "Accounting, tax, payroll, Xero and advisory support.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f6f3ec",

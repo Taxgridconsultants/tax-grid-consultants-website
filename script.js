@@ -6,6 +6,15 @@
   const years = document.querySelectorAll('[data-year]');
   const revealItems = document.querySelectorAll('.reveal');
 
+  const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.querySelectorAll('.nav-link').forEach(link => {
+    const target = (link.getAttribute('href') || '').toLowerCase();
+    if (target === currentPage) {
+      link.classList.add('is-active');
+      link.setAttribute('aria-current', 'page');
+    }
+  });
+
   years.forEach(el => el.textContent = new Date().getFullYear());
 
   const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 20);
@@ -52,7 +61,7 @@ Business connection: ${value('location') || 'Not provided'}
 Area: ${value('service') || 'General consultation'}
 
 Situation:
-${value('message') || 'I would like to discuss the support TGC can provide.'}
+${value('message') || 'I would like to discuss the support Tax Grid Consultants can provide.'}
 
 Regards,
 ${value('name')}`;
@@ -66,7 +75,7 @@ ${value('name')}`;
         } else {
           const data = new FormData(form);
           const company = String(data.get('company') || '').trim();
-          const service = String(data.get('service') || 'TGC consultation').trim();
+          const service = String(data.get('service') || 'Tax Grid Consultants consultation').trim();
           const subject = encodeURIComponent(`Consultation request — ${service}${company ? ` — ${company}` : ''}`);
           window.location.href = `mailto:info@taxgridconsultants.com?subject=${subject}&body=${encodeURIComponent(message)}`;
         }
