@@ -1,0 +1,17 @@
+{
+  "name": "Tax Grid Consultants Limited",
+  "short_name": "TGC",
+  "description": "Accounting, tax, payroll and advisory support.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f3ec",
+  "theme_color": "#f7b900",
+  "icons": [
+    {
+      "src": "assets/tgc-favicon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
