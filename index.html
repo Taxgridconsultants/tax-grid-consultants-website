@@ -3,10 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f5f1e9">
-  <meta name="description" content="Tax Grid Consultants provides accounting, tax, payroll and reporting support for businesses in Mauritius.">
-  <title>Tax Grid Consultants — Clarity and control for business</title>
-  <link rel="stylesheet" href="styles.css?v=tgc-signature-2">
+  <meta name="theme-color" content="#f6f2ea">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Tax Grid Consultants provides accounting, tax, VAT, payroll, reporting, company and Xero support for businesses in Mauritius.">
+  <link rel="canonical" href="https://www.taxgridconsultants.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tax Grid Consultants">
+  <meta property="og:title" content="Tax Grid Consultants — Clarity and control for business">
+  <meta property="og:description" content="Connected accounting, tax, payroll and reporting support for businesses in Mauritius.">
+  <meta property="og:url" content="https://www.taxgridconsultants.com/">
+  <meta property="og:image" content="https://www.taxgridconsultants.com/assets/tgc-social-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <title>Accounting, Tax, Payroll & Advisory in Mauritius | Tax Grid Consultants</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AccountingService",
+    "name": "Tax Grid Consultants Limited",
+    "url": "https://www.taxgridconsultants.com/",
+    "logo": "https://www.taxgridconsultants.com/assets/tgc-logo-full-colour-transparent.png",
+    "image": "https://www.taxgridconsultants.com/assets/tgc-social-preview.png",
+    "description": "Accounting, tax, VAT, payroll, reporting, company and Xero support for businesses in Mauritius.",
+    "telephone": "+230 5257 7613",
+    "email": "info@taxgridconsultants.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jaylall Lane, Berthaud Avenue",
+      "addressLocality": "Quatre Bornes",
+      "postalCode": "72427",
+      "addressCountry": "MU"
+    },
+    "areaServed": {"@type": "Country", "name": "Mauritius"}
+  }
+  </script>
+  <link rel="stylesheet" href="styles.css?v=tgc-final-2">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -43,7 +75,7 @@
               <button type="button" role="option" data-lang="mfe">Kreol Morisien</button>
             </div>
           </div>
-          <a class="button button-primary button-small" href="#contact" data-i18n="book">Request a consultation</a>
+          <a class="button button-primary button-small header-cta" href="#contact"><span data-i18n="book">Request a consultation</span><svg class="button-arrow" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"></path></svg></a>
         </div>
       </div>
     </div>
@@ -60,7 +92,7 @@
           <h1 data-i18n-html="heroTitle">Clear numbers.<br>Controlled obligations.<br><em>Better decisions.</em></h1>
           <p class="hero-lead" data-i18n="heroLead">Tax Grid Consultants connects accounting, tax, payroll and reporting so businesses in Mauritius can stay organised, meet their responsibilities and understand their financial position.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#contact" data-i18n="book">Request a consultation</a>
+            <a class="button button-primary" href="#contact"><span data-i18n="book">Request a consultation</span><svg class="button-arrow" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"></path></svg></a>
             <a class="button button-secondary" href="#services" data-i18n="exploreServices">Explore our services</a>
           </div>
           <p class="hero-note" data-i18n="heroNote">Professional support designed around the way your business actually works.</p>
@@ -80,11 +112,11 @@
           <div class="engine-checkpoint checkpoint-three"><b>03</b><span data-i18n="engineTax">TAX</span></div>
           <div class="engine-output engine-card">
             <small data-i18n="engineOutput">CLEAR FINANCIAL VIEW</small>
-            <div class="output-ring"><span aria-hidden="true">✓</span></div>
+            <div class="output-ring"><svg class="check-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 12.5 4 4L18.5 7"></path></svg></div>
             <div class="output-bars"><i></i><i></i><i></i><i></i></div>
             <strong data-i18n="engineResult">Organised. Visible. Useful.</strong>
           </div>
-          <div class="engine-seal"><span>✓</span></div>
+          <div class="engine-seal"><svg class="check-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 12.5 4 4L18.5 7"></path></svg></div>
         </div>
       </div>
     </section>
@@ -108,21 +140,25 @@
           <p data-i18n="momentsLead">Start with the situation your business is facing. Tax Grid Consultants brings the relevant accounting, tax, payroll and reporting support together around it.</p>
         </div>
 
-        <div class="moment-tabs reveal" role="tablist" aria-label="Business situations" data-moment-tabs></div>
+        <div class="moment-tabs reveal" role="tablist" aria-label="Business situations" data-moment-tabs>
+          <button type="button" role="tab" aria-selected="true">Starting correctly</button>
+          <button type="button" role="tab" aria-selected="false">Managing ongoing responsibilities</button>
+          <button type="button" role="tab" aria-selected="false">Employing people</button>
+          <button type="button" role="tab" aria-selected="false">Understanding performance</button>
+        </div>
         <div class="moment-stage reveal reveal-delay">
-          <div class="moment-content">
-            
-            <h3 data-moment-title></h3>
-            <p data-moment-description></p>
-            <div class="moment-related" data-moment-related></div>
+          <div class="moment-content" role="tabpanel" data-moment-panel>
+            <h3 data-moment-title>Starting correctly</h3>
+            <p data-moment-description>Establish the accounting, tax and company foundations needed to begin with clearer records and responsibilities.</p>
+            <div class="moment-related" data-moment-related><span>Company Services</span><span>Accounting &amp; Bookkeeping</span><span>Tax &amp; VAT</span><span>Xero Support</span></div>
           </div>
           <div class="moment-visual" data-moment-visual aria-hidden="true">
             <div class="visual-orbit orbit-one"></div>
             <div class="visual-orbit orbit-two"></div>
             <div class="visual-core"><span>✓</span></div>
-            <div class="visual-card visual-card-a"><small>01</small><b></b><i></i></div>
-            <div class="visual-card visual-card-b"><small>02</small><b></b><i></i></div>
-            <div class="visual-card visual-card-c"><small>03</small><b></b><i></i></div>
+            <div class="visual-card visual-card-a"><span class="visual-card-mark"></span><b></b><i></i></div>
+            <div class="visual-card visual-card-b"><span class="visual-card-mark"></span><b></b><i></i></div>
+            <div class="visual-card visual-card-c"><span class="visual-card-mark"></span><b></b><i></i></div>
           </div>
         </div>
       </div>
@@ -137,14 +173,20 @@
         </div>
 
         <div class="service-explorer reveal">
-          <div class="service-list" role="tablist" aria-label="Services" data-service-list></div>
-          <div class="service-panel" data-service-panel>
+          <div class="service-list" role="tablist" aria-label="Services" data-service-list>
+            <button type="button" role="tab" aria-selected="true"><span>Accounting &amp; Bookkeeping</span></button>
+            <button type="button" role="tab" aria-selected="false"><span>Tax &amp; VAT</span></button>
+            <button type="button" role="tab" aria-selected="false"><span>Payroll</span></button>
+            <button type="button" role="tab" aria-selected="false"><span>Reporting &amp; Advisory</span></button>
+            <button type="button" role="tab" aria-selected="false"><span>Company Services</span></button>
+            <button type="button" role="tab" aria-selected="false"><span>Xero Support</span></button>
+          </div>
+          <div class="service-panel" role="tabpanel" data-service-panel>
             <div class="service-panel-copy">
-              
-              <h3 data-service-headline></h3>
-              <p data-service-description></p>
-              <ul data-service-highlights></ul>
-              <a class="text-link" href="#contact"><span data-i18n="discussService">Discuss this service</span><span aria-hidden="true">↗</span></a>
+              <h3 data-service-headline>Reliable financial records that support reporting and compliance.</h3>
+              <p data-service-description>Tax Grid Consultants helps maintain organised accounting records, reconciliations and year-end readiness so business information can be used with greater confidence.</p>
+              <ul data-service-highlights><li>Bookkeeping</li><li>Bank and control-account reconciliations</li><li>Year-end readiness</li><li>Financial record maintenance</li></ul>
+              <a class="text-link" href="#contact"><span data-i18n="discussService">Discuss this service</span><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M5 15 15 5M8 5h7v7"></path></svg></a>
             </div>
             <div class="service-visual" data-service-visual aria-hidden="true">
               <div class="service-grid"></div>
@@ -187,7 +229,7 @@
             <article><span class="why-accent" aria-hidden="true"></span><div><h3 data-i18n="whyOneTitle">Mauritius-focused knowledge</h3><p data-i18n="whyOneText">Accounting and tax support shaped around the local business environment.</p></div></article>
             <article><span class="why-accent" aria-hidden="true"></span><div><h3 data-i18n="whyTwoTitle">Connected responsibilities</h3><p data-i18n="whyTwoText">Accounting, tax, payroll and reporting are managed as related areas.</p></div></article>
             <article><span class="why-accent" aria-hidden="true"></span><div><h3 data-i18n="whyThreeTitle">Direct communication</h3><p data-i18n="whyThreeText">Clear explanations without unnecessary complexity.</p></div></article>
-            <article><span class="why-accent" aria-hidden="true"></span><div><h3 data-i18n="whyFourTitle">Modern working methods</h3><p data-i18n="whyFourText">Structured digital records, clear workflows and practical accounting systems.</p></div></article>
+            <article><span class="why-accent" aria-hidden="true"></span><div><h3 data-i18n="whyFourTitle">Structured working methods</h3><p data-i18n="whyFourText">Structured digital records, clear workflows and practical accounting systems.</p></div></article>
           </div>
         </div>
 
@@ -211,8 +253,8 @@
           <div class="about-aura about-aura-gold"></div>
           <div class="about-aura about-aura-red"></div>
           <div class="about-brand-seal">
-            <img src="assets/tgc-logo-reversed-clean.png" width="709" height="438" alt="">
-            <span>PRECISION · COMPLIANCE · GROWTH</span>
+            <span class="about-logo-plate"><img src="assets/tgc-logo-full-colour-transparent.png" width="709" height="438" alt=""></span>
+            <span class="about-tagline">PRECISION · COMPLIANCE · GROWTH</span>
           </div>
           <div class="about-curve about-curve-one"></div>
           <div class="about-curve about-curve-two"></div>
@@ -228,15 +270,15 @@
             <svg viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"></path></svg>
             <i></i><i></i><i></i>
           </div>
-          <div class="about-completion"><span>✓</span></div>
+          <div class="about-completion"><svg class="check-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 12.5 4 4L18.5 7"></path></svg></div>
           <div class="about-corner-signature"></div>
         </div>
         <div class="about-copy reveal reveal-delay">
           <p class="section-kicker" data-i18n="aboutLabel">ABOUT TAX GRID CONSULTANTS</p>
-          <h2 data-i18n="aboutTitle">A modern accounting practice built around clarity and control.</h2>
-          <p data-i18n="aboutTextOne">Tax Grid Consultants Limited supports businesses in Mauritius through connected accounting, tax, payroll, reporting, company and Xero services—delivered through a structured and direct professional relationship.</p>
+          <h2 data-i18n="aboutTitle">An accounting practice built around clarity and control.</h2>
+          <p data-i18n="aboutTextOne">Tax Grid Consultants Limited supports businesses in Mauritius through connected accounting, tax, payroll, reporting, company services and Xero support—delivered through a structured and direct professional relationship.</p>
           <p data-i18n="aboutTextTwo">The aim is simple: keep the financial process organised, explain what matters and help business owners use their information with greater confidence.</p>
-          <a class="text-link" href="#contact"><span data-i18n="startConversation">Request a consultation</span><span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#contact"><span data-i18n="startConversation">Request a consultation</span><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M5 15 15 5M8 5h7v7"></path></svg></a>
         </div>
       </div>
     </section>
@@ -248,7 +290,9 @@
           <h2 data-i18n="faqTitle">Clear answers before we begin.</h2>
           <p data-i18n="faqLead">Clear answers about how Tax Grid Consultants works with businesses and what to expect before a professional engagement begins.</p>
         </div>
-        <div class="faq-list reveal reveal-delay" data-faq-list></div>
+        <div class="faq-list reveal reveal-delay" data-faq-list>
+          <article class="faq-item open"><button class="faq-question" type="button" aria-expanded="true"><span>What types of businesses does Tax Grid Consultants support?</span><span>+</span></button><div class="faq-answer"><div><p>Tax Grid Consultants supports start-ups, owner-managed businesses and growing companies in Mauritius, including employers that need payroll or recurring compliance support.</p></div></div></article>
+        </div>
       </div>
     </section>
 
@@ -261,7 +305,7 @@
           <div class="contact-details">
             <a href="mailto:info@taxgridconsultants.com">info@taxgridconsultants.com</a>
             <a href="tel:+23052577613">+230 5257 7613</a>
-            <a href="https://wa.me/23052577613" target="_blank" rel="noopener">WhatsApp ↗</a>
+            <a href="https://wa.me/23052577613" target="_blank" rel="noopener">WhatsApp <svg class="external-arrow" aria-hidden="true" viewBox="0 0 20 20"><path d="M5 15 15 5M8 5h7v7"></path></svg></a>
           </div>
         </div>
 
@@ -274,9 +318,10 @@
             <label><span data-i18n="formEmail">Email</span><input type="email" name="email" autocomplete="email" required></label>
             <label><span data-i18n="formPhone">Telephone</span><input name="phone" autocomplete="tel"></label>
           </div>
-          <label><span data-i18n="formService">Service required</span><select name="service" data-service-select></select></label>
+          <label><span data-i18n="formService">Service required</span><select name="service" data-service-select><option value="">—</option><option>Accounting &amp; Bookkeeping</option><option>Tax &amp; VAT</option><option>Payroll</option><option>Reporting &amp; Advisory</option><option>Company Services</option><option>Xero Support</option></select></label>
           <label><span data-i18n="formMessage">Brief message</span><textarea name="message" rows="4" required></textarea></label>
-          <button class="button button-primary" type="submit" data-i18n="sendEnquiry">Send enquiry</button>
+          <label class="consent-field"><input type="checkbox" name="privacy_acknowledgement" required><span data-i18n-html="formConsent">I understand that my details will be used to review and respond to this enquiry. <a href="privacy.html">Read the Privacy Notice</a>.</span></label>
+          <button class="button button-primary" type="submit"><span data-i18n="sendEnquiry">Send enquiry</span><svg class="button-arrow" aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"></path></svg></button>
           <p class="form-note" data-i18n="formNote">Please do not submit passwords, bank records, payroll files or identity documents through this form.</p>
           <p class="form-status" role="status" aria-live="polite" data-form-status></p>
         </form>
@@ -287,7 +332,7 @@
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div class="footer-brand">
-        <img src="assets/tgc-logo-reversed-clean.png" width="709" height="438" decoding="async" alt="Tax Grid Consultants Limited">
+        <span class="footer-logo-plate"><img src="assets/tgc-logo-full-colour-transparent.png" width="709" height="438" decoding="async" alt="Tax Grid Consultants Limited"></span>
         <p data-i18n="footerSummary">Accounting, tax, payroll and advisory support for businesses in Mauritius.</p>
         <strong>PRECISION · COMPLIANCE · GROWTH</strong>
       </div>
@@ -317,10 +362,10 @@
     </div>
     <div class="shell footer-legal">
       <p>© <span data-year></span> Tax Grid Consultants Limited · BRN C23198717 · VAT No. 28161022</p>
-      <p><span data-i18n="privacy">Privacy</span> · <span data-i18n="disclaimer">Website disclaimer</span></p>
+      <p><a href="privacy.html" data-i18n="privacy">Privacy Notice</a> · <a href="disclaimer.html" data-i18n="disclaimer">Website disclaimer</a></p>
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=tgc-final-2"></script>
 </body>
 </html>
