@@ -29,3 +29,12 @@ Tax Grid Consultants Limited
 BRN C23198717 · VAT No. 28161022
 Jaylall Lane, Berthaud Avenue, Quatre Bornes 72427, Mauritius
 info@taxgridconsultants.com · +230 5257 7613
+
+
+MOTION REFINEMENT
+- Smooth section reveals with blur-to-sharp staging
+- Animated business-situation and service transitions
+- Sequential connected-finance flow visualization
+- Purposeful hero and About visual motion
+- Smooth language switching and single-open FAQ behavior
+- Full prefers-reduced-motion fallback

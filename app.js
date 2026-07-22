@@ -150,6 +150,36 @@ if (!content[state.lang]) state.lang = 'en';
 const qs = (selector,scope=document)=>scope.querySelector(selector);
 const qsa = (selector,scope=document)=>[...scope.querySelectorAll(selector)];
 
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const motionTokens = new WeakMap();
+
+function nextFrame(callback){
+  requestAnimationFrame(()=>requestAnimationFrame(callback));
+}
+
+function animateSwap(container,update,{outClass='is-switching-out',inClass='is-switching-in',delay=150}={}){
+  if(!container || reducedMotion){ update(); return; }
+  const token=(motionTokens.get(container)||0)+1;
+  motionTokens.set(container,token);
+  container.classList.remove(inClass);
+  container.classList.add(outClass);
+  window.setTimeout(()=>{
+    if(token!==motionTokens.get(container)) return;
+    update();
+    container.classList.remove(outClass);
+    container.classList.add(inClass);
+    nextFrame(()=>window.setTimeout(()=>container.classList.remove(inClass),520));
+  },delay);
+}
+
+function updateTabSelection(container,index){
+  qsa('button',container).forEach((button,buttonIndex)=>{
+    const selected=buttonIndex===index;
+    button.setAttribute('aria-selected',String(selected));
+    button.tabIndex=selected?0:-1;
+  });
+}
+
 function updateMetadata(){
   const meta=metaByLanguage[state.lang];
   document.title=meta.title;
@@ -195,67 +225,103 @@ function activateTabFromKey(event,buttons,currentIndex,activate){
   requestAnimationFrame(()=>buttons[next]?.focus());
 }
 
-function renderMoments(){
+function renderMoments(options={}){
   const items=content[state.lang].moments;
   const tabs=qs('[data-moment-tabs]');
+  const stage=qs('.moment-stage');
   const panel=qs('[data-moment-panel]');
-  tabs.innerHTML='';
-  items.forEach((item,index)=>{
-    const btn=document.createElement('button');
-    btn.type='button';
-    btn.role='tab';
-    btn.id=`moment-tab-${index}`;
-    btn.setAttribute('aria-controls','moment-panel');
-    btn.textContent=item.title;
-    const selected=index===state.moment;
-    btn.setAttribute('aria-selected',String(selected));
-    btn.tabIndex=selected?0:-1;
-    btn.addEventListener('click',()=>{state.moment=index;renderMoments();});
-    btn.addEventListener('keydown',event=>activateTabFromKey(event,qsa('button',tabs),index,next=>{state.moment=next;renderMoments();}));
-    tabs.appendChild(btn);
-  });
-  const item=items[state.moment];
-  panel.id='moment-panel';
-  panel.role='tabpanel';
-  panel.setAttribute('aria-labelledby',`moment-tab-${state.moment}`);
-  qs('[data-moment-title]').textContent=item.title;
-  qs('[data-moment-description]').textContent=item.description;
-  qs('[data-moment-related]').innerHTML=item.related.map(label=>`<span>${label}</span>`).join('');
-  qs('[data-moment-visual]').dataset.variant=String(state.moment);
+  const visual=qs('[data-moment-visual]');
+  const shouldRebuild=tabs.children.length!==items.length || options.rebuild;
+
+  if(shouldRebuild){
+    tabs.innerHTML='';
+    items.forEach((item,index)=>{
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.role='tab';
+      btn.id=`moment-tab-${index}`;
+      btn.setAttribute('aria-controls','moment-panel');
+      btn.textContent=item.title;
+      btn.addEventListener('click',()=>setMoment(index));
+      btn.addEventListener('keydown',event=>activateTabFromKey(event,qsa('button',tabs),index,setMoment));
+      tabs.appendChild(btn);
+    });
+  }else{
+    qsa('button',tabs).forEach((btn,index)=>btn.textContent=items[index].title);
+  }
+
+  const apply=()=>{
+    const item=items[state.moment];
+    updateTabSelection(tabs,state.moment);
+    panel.id='moment-panel';
+    panel.role='tabpanel';
+    panel.setAttribute('aria-labelledby',`moment-tab-${state.moment}`);
+    qs('[data-moment-title]').textContent=item.title;
+    qs('[data-moment-description]').textContent=item.description;
+    qs('[data-moment-related]').innerHTML=item.related.map((label,index)=>`<span style="--chip-index:${index}">${label}</span>`).join('');
+    visual.dataset.variant=String(state.moment);
+  };
+
+  if(options.animate) animateSwap(stage,apply); else apply();
 }
 
-function renderServices(){
+function setMoment(index){
+  const items=content[state.lang].moments;
+  if(index<0 || index>=items.length || index===state.moment) return;
+  state.moment=index;
+  renderMoments({animate:true});
+}
+
+function renderServices(options={}){
   const items=content[state.lang].services;
   const list=qs('[data-service-list]');
   const panel=qs('[data-service-panel]');
-  list.innerHTML='';
-  items.forEach((item,index)=>{
-    const btn=document.createElement('button');
-    btn.type='button';
-    btn.role='tab';
-    btn.id=`service-tab-${index}`;
-    btn.setAttribute('aria-controls','service-panel');
-    btn.innerHTML=`<span>${item.name}</span>`;
-    const selected=index===state.service;
-    btn.setAttribute('aria-selected',String(selected));
-    btn.tabIndex=selected?0:-1;
-    btn.addEventListener('click',()=>{state.service=index;renderServices();});
-    btn.addEventListener('keydown',event=>activateTabFromKey(event,qsa('button',list),index,next=>{state.service=next;renderServices();}));
-    list.appendChild(btn);
-  });
-  const item=items[state.service];
-  panel.id='service-panel';
-  panel.role='tabpanel';
-  panel.setAttribute('aria-labelledby',`service-tab-${state.service}`);
-  qs('[data-service-headline]').textContent=item.headline;
-  qs('[data-service-description]').textContent=item.description;
-  qs('[data-service-highlights]').innerHTML=item.highlights.map(label=>`<li>${label}</li>`).join('');
   const visual=qs('[data-service-visual]');
-  const heights=[[38,65,48],[60,42,72],[44,74,56],[55,68,82],[66,50,62],[48,78,66]][state.service];
-  qsa('.service-pillar',visual).forEach((pillar,index)=>{
-    pillar.style.height=`${heights[index]}%`;
-    pillar.style.transform=`translateY(${(state.service%2?index:-index)*3}px)`;
-  });
+  const shouldRebuild=list.children.length!==items.length || options.rebuild;
+
+  if(shouldRebuild){
+    list.innerHTML='';
+    items.forEach((item,index)=>{
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.role='tab';
+      btn.id=`service-tab-${index}`;
+      btn.setAttribute('aria-controls','service-panel');
+      btn.innerHTML=`<span>${item.name}</span>`;
+      btn.addEventListener('click',()=>setService(index));
+      btn.addEventListener('keydown',event=>activateTabFromKey(event,qsa('button',list),index,setService));
+      list.appendChild(btn);
+    });
+  }else{
+    qsa('button',list).forEach((btn,index)=>qs('span',btn).textContent=items[index].name);
+  }
+
+  const apply=()=>{
+    const item=items[state.service];
+    updateTabSelection(list,state.service);
+    panel.id='service-panel';
+    panel.role='tabpanel';
+    panel.setAttribute('aria-labelledby',`service-tab-${state.service}`);
+    panel.dataset.service=String(state.service);
+    qs('[data-service-headline]').textContent=item.headline;
+    qs('[data-service-description]').textContent=item.description;
+    qs('[data-service-highlights]').innerHTML=item.highlights.map((label,index)=>`<li style="--item-index:${index}">${label}</li>`).join('');
+    visual.dataset.variant=String(state.service);
+    const heights=[[38,65,48],[60,42,72],[44,74,56],[55,68,82],[66,50,62],[48,78,66]][state.service];
+    qsa('.service-pillar',visual).forEach((pillar,index)=>{
+      pillar.style.height=`${heights[index]}%`;
+      pillar.style.transform=`translateY(${(state.service%2?index:-index)*3}px)`;
+    });
+  };
+
+  if(options.animate) animateSwap(panel,apply,{delay:145}); else apply();
+}
+
+function setService(index){
+  const items=content[state.lang].services;
+  if(index<0 || index>=items.length || index===state.service) return;
+  state.service=index;
+  renderServices({animate:true});
 }
 
 function renderFaq(){
@@ -268,8 +334,14 @@ function renderFaq(){
     item.innerHTML=`<button class="faq-question" type="button" aria-expanded="${index===0}" aria-controls="${answerId}"><span>${question}</span><span aria-hidden="true">+</span></button><div class="faq-answer" id="${answerId}"><div><p>${answer}</p></div></div>`;
     const button=qs('.faq-question',item);
     button.addEventListener('click',()=>{
-      const open=item.classList.toggle('open');
-      button.setAttribute('aria-expanded',String(open));
+      const willOpen=!item.classList.contains('open');
+      qsa('.faq-item',list).forEach(other=>{
+        if(other===item) return;
+        other.classList.remove('open');
+        qs('.faq-question',other)?.setAttribute('aria-expanded','false');
+      });
+      item.classList.toggle('open',willOpen);
+      button.setAttribute('aria-expanded',String(willOpen));
     });
     list.appendChild(item);
   });
@@ -297,14 +369,24 @@ function renderFooterLanguages(){
 }
 
 function setLanguage(lang){
-  state.lang=content[lang]?lang:'en';
-  safeStorage.set('tgc-language',state.lang);
-  translateStatic();
-  renderMoments();
-  renderServices();
-  renderFaq();
-  renderServiceSelect();
-  renderFooterLanguages();
+  const nextLanguage=content[lang]?lang:'en';
+  if(nextLanguage===state.lang){
+    qs('[data-language-control]').classList.remove('open');
+    qs('[data-language-button]').setAttribute('aria-expanded','false');
+    return;
+  }
+  const page=qs('main');
+  const apply=()=>{
+    state.lang=nextLanguage;
+    safeStorage.set('tgc-language',state.lang);
+    translateStatic();
+    renderMoments({rebuild:true});
+    renderServices({rebuild:true});
+    renderFaq();
+    renderServiceSelect();
+    renderFooterLanguages();
+  };
+  animateSwap(page,apply,{outClass:'is-language-out',inClass:'is-language-in',delay:130});
   const control=qs('[data-language-control]');
   control.classList.remove('open');
   qs('[data-language-button]').setAttribute('aria-expanded','false');
@@ -358,13 +440,45 @@ function updateHeader(){ header.classList.toggle('scrolled',window.scrollY>18); 
 window.addEventListener('scroll',updateHeader,{passive:true});
 updateHeader();
 
+document.documentElement.classList.add('motion-ready');
+nextFrame(()=>document.documentElement.classList.add('page-ready'));
+qs('.credibility-grid')?.classList.add('reveal');
+
 const revealObserver='IntersectionObserver' in window?new IntersectionObserver(entries=>entries.forEach(entry=>{
   if(entry.isIntersecting){
     entry.target.classList.add('visible');
     revealObserver.unobserve(entry.target);
   }
-}),{threshold:.12}):null;
-qsa('.reveal').forEach(el=>revealObserver?revealObserver.observe(el):el.classList.add('visible'));
+}),{threshold:.13,rootMargin:'0px 0px -7% 0px'}):null;
+qsa('.reveal').forEach((el,index)=>{
+  el.style.setProperty('--reveal-order',String(index%4));
+  revealObserver?revealObserver.observe(el):el.classList.add('visible');
+});
+
+const flowMap=qs('.flow-map');
+if(flowMap){
+  const runFlow=()=>{
+    if(flowMap.dataset.played==='true') return;
+    flowMap.dataset.played='true';
+    flowMap.classList.add('flow-animate');
+    const nodes=qsa('.flow-node',flowMap);
+    nodes.forEach((node,index)=>window.setTimeout(()=>{
+      nodes.forEach((other,otherIndex)=>other.classList.toggle('is-active',otherIndex===index));
+      node.classList.add('is-complete');
+    },260+index*420));
+    window.setTimeout(()=>nodes.forEach(node=>node.classList.remove('is-active')),260+nodes.length*420+350);
+  };
+  if('IntersectionObserver' in window){
+    const flowObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(entry.isIntersecting){ runFlow(); flowObserver.disconnect(); }
+    }),{threshold:.35});
+    flowObserver.observe(flowMap);
+  }else runFlow();
+}
+
+qsa('.why-points,.process-list,.credibility-grid').forEach(group=>{
+  qsa(':scope > *',group).forEach((child,index)=>child.style.setProperty('--stagger-index',String(index)));
+});
 
 const navSections=qsa('main section[id]').filter(section=>['services','why','about','contact'].includes(section.id));
 if('IntersectionObserver' in window){
@@ -412,4 +526,9 @@ contactForm.addEventListener('submit',event=>{
 });
 
 qs('[data-year]').textContent=new Date().getFullYear();
-setLanguage(state.lang);
+translateStatic();
+renderMoments({rebuild:true});
+renderServices({rebuild:true});
+renderFaq();
+renderServiceSelect();
+renderFooterLanguages();
