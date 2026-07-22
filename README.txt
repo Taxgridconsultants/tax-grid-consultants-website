@@ -38,3 +38,12 @@ MOTION REFINEMENT
 - Purposeful hero and About visual motion
 - Smooth language switching and single-open FAQ behavior
 - Full prefers-reduced-motion fallback
+
+
+HOMEPAGE PRESENTATION + CONNECTED FLOW
+- Homepage-only expanded Tax Grid Consultants brand lockup at the top of the page
+- Smooth transition to the compact normal navigation after scrolling
+- Privacy Notice and Website Disclaimer retain the standard compact header
+- Refined five-stage information flow: Records → Accounting → Obligations → Reporting → Decisions
+- Each flow stage is clickable, keyboard accessible and supported by concise explanatory copy
+- Automatic stage progression stops respectfully when the visitor interacts

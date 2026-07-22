@@ -38,16 +38,20 @@
     "areaServed": {"@type": "Country", "name": "Mauritius"}
   }
   </script>
-  <link rel="stylesheet" href="styles.css?v=tgc-motion-1">
+  <link rel="stylesheet" href="styles.css?v=tgc-intro-flow-1">
   <script>document.documentElement.classList.add('js');</script>
 </head>
-<body>
+<body class="home-page">
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
   <header class="site-header" data-header>
     <div class="shell header-inner">
       <a class="brand" href="#top" aria-label="Tax Grid Consultants home">
         <img src="assets/tgc-logo-full-colour-transparent.png" width="709" height="438" decoding="async" alt="Tax Grid Consultants Limited">
+        <span class="brand-intro-lockup" aria-hidden="true">
+          <strong>PRECISION · COMPLIANCE · GROWTH</strong>
+          <small data-i18n="heroLabel">ACCOUNTING · TAX · PAYROLL · ADVISORY</small>
+        </span>
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
@@ -209,13 +213,22 @@
           <h2 data-i18n="connectedTitle">Your financial responsibilities do not operate separately.</h2>
           <p data-i18n="connectedLead">Payroll affects the accounts. Accounting supports tax. Reporting turns those records into useful information. Tax Grid Consultants keeps these responsibilities connected, so each stage is supported by clearer and more reliable records.</p>
         </div>
-        <div class="flow-map reveal reveal-delay" aria-label="Records flow through payroll, tax and reporting toward decisions">
-          <div class="flow-line"></div>
-          <div class="flow-node active"><b>01</b><span data-i18n="flowRecords">Records</span></div>
-          <div class="flow-node"><b>02</b><span data-i18n="flowPayroll">Payroll</span></div>
-          <div class="flow-node"><b>03</b><span data-i18n="flowTax">Tax</span></div>
-          <div class="flow-node"><b>04</b><span data-i18n="flowReporting">Reporting</span></div>
-          <div class="flow-node"><b>05</b><span data-i18n="flowDecisions">Decisions</span></div>
+        <div class="flow-experience reveal reveal-delay">
+          <div class="flow-map" data-flow-map aria-label="Financial information moves from records to decisions">
+            <div class="flow-line" aria-hidden="true"><span data-flow-progress></span></div>
+            <button class="flow-node" type="button" data-flow-index="0" aria-pressed="true"><b>01</b><span data-i18n="flowRecords">Records</span></button>
+            <button class="flow-node" type="button" data-flow-index="1" aria-pressed="false"><b>02</b><span data-i18n="flowAccounting">Accounting</span></button>
+            <button class="flow-node" type="button" data-flow-index="2" aria-pressed="false"><b>03</b><span data-i18n="flowObligations">Obligations</span></button>
+            <button class="flow-node" type="button" data-flow-index="3" aria-pressed="false"><b>04</b><span data-i18n="flowReporting">Reporting</span></button>
+            <button class="flow-node" type="button" data-flow-index="4" aria-pressed="false"><b>05</b><span data-i18n="flowDecisions">Decisions</span></button>
+          </div>
+          <div class="flow-detail" data-flow-detail aria-live="polite">
+            <span class="flow-detail-number" data-flow-number>01</span>
+            <div>
+              <strong data-flow-title>Records organised</strong>
+              <p data-flow-description>Invoices, bank activity and source documents are gathered and structured.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -366,6 +379,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=tgc-motion-1"></script>
+  <script src="app.js?v=tgc-intro-flow-1"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 const content = {
   en: {
-    languageName: 'English', htmlLang: 'en',
+    languageName: 'English', htmlLang: 'en', flowAria:'Financial information moves from records to decisions',
     static: {
       skip:'Skip to content', openMenu:'Open menu', navServices:'Services', navWhy:'Why Tax Grid', navAbout:'About', navContact:'Contact', book:'Request a consultation',
       heroLabel:'ACCOUNTING · TAX · PAYROLL · ADVISORY', heroTitle:'Clear numbers.<br>Controlled obligations.<br><em>Better decisions.</em>', heroLead:'Tax Grid Consultants connects accounting, tax, payroll and reporting so businesses in Mauritius can stay organised, meet their responsibilities and understand their financial position.', exploreServices:'Explore our services', heroNote:'Professional support designed around the way your business actually works.',
@@ -8,7 +8,7 @@ const content = {
       trustMauritius:'Mauritius-focused support', trustConnected:'Accounting, tax and payroll connected', trustConfidential:'Confidential handling', trustXero:'Xero Partner',
       momentsLabel:'BUILT AROUND YOUR BUSINESS', momentsTitle:'Support at the moments that matter.', momentsLead:'Start with the situation your business is facing. Tax Grid Consultants brings the relevant accounting, tax, payroll and reporting support together around it.',
       servicesLabel:'OUR SERVICES', servicesTitle:'Accounting and compliance, kept connected.', servicesLead:'Choose the area you need. The wider process remains organised around one clear professional relationship.', discussService:'Discuss this service',
-      connectedLabel:'CONNECTED FINANCIAL MANAGEMENT', connectedTitle:'Your financial responsibilities do not operate separately.', connectedLead:'Payroll affects the accounts. Accounting supports tax. Reporting turns those records into useful information. Tax Grid Consultants keeps these responsibilities connected, so each stage is supported by clearer and more reliable records.', flowRecords:'Records', flowPayroll:'Payroll', flowTax:'Tax', flowReporting:'Reporting', flowDecisions:'Decisions',
+      connectedLabel:'CONNECTED FINANCIAL MANAGEMENT', connectedTitle:'Your financial responsibilities do not operate separately.', connectedLead:'Records support accounting. Accounting and payroll feed tax and employer obligations. Reporting turns connected information into a clearer view for decisions. Tax Grid Consultants keeps the full process organised.', flowRecords:'Records', flowAccounting:'Accounting', flowObligations:'Obligations', flowReporting:'Reporting', flowDecisions:'Decisions',
       whyLabel:'WHY TAX GRID CONSULTANTS', whyTitle:'Professional support that remains practical.', whyOneTitle:'Mauritius-focused knowledge', whyOneText:'Accounting and tax support shaped around the local business environment.', whyTwoTitle:'Connected responsibilities', whyTwoText:'Accounting, tax, payroll and reporting are managed as related areas.', whyThreeTitle:'Direct communication', whyThreeText:'Clear explanations without unnecessary complexity.', whyFourTitle:'Structured working methods', whyFourText:'Structured digital records, clear workflows and practical accounting systems.',
       processLabel:'HOW WE WORK', processOneTitle:'Understand', processOneText:'Review the business, records and current responsibilities.', processTwoTitle:'Organise', processTwoText:'Identify the information, systems and timetable required.', processThreeTitle:'Manage', processThreeText:'Complete the agreed accounting, payroll, tax and reporting work.', processFourTitle:'Review', processFourText:'Discuss the results, unresolved matters and next priorities.',
       aboutLabel:'ABOUT TAX GRID CONSULTANTS', aboutTitle:'An accounting practice built around clarity and control.', aboutTextOne:'Tax Grid Consultants Limited supports businesses in Mauritius through connected accounting, tax, payroll, reporting, company services and Xero support—delivered through a structured and direct professional relationship.', aboutTextTwo:'The aim is simple: keep the financial process organised, explain what matters and help business owners use their information with greater confidence.', startConversation:'Request a consultation',
@@ -31,6 +31,13 @@ const content = {
       {name:'Company Services',headline:'Structured support for company establishment and ongoing requirements.',description:'Assistance with incorporation, corporate information and selected recurring company obligations.',highlights:['Company incorporation','Annual returns','Beneficial ownership support','Corporate information changes']},
       {name:'Xero Support',headline:'A practical accounting system configured around the business.',description:'Support with setup, migration, workflows, reconciliation, reporting and user training.',highlights:['Setup and migration','Chart of accounts','Reconciliation workflows','Training and ongoing support']}
     ],
+    flowDetails:[
+      {title:'Records organised',description:'Invoices, bank activity and source documents are gathered and structured.'},
+      {title:'Accounting maintained',description:'Transactions are recorded and reconciled so the financial position remains reliable.'},
+      {title:'Obligations managed',description:'Payroll, VAT, tax and employer responsibilities are prepared from connected records.'},
+      {title:'Reporting made useful',description:'Financial information is shaped into clear reports and matters requiring attention.'},
+      {title:'Decisions supported',description:'Business owners can act with a clearer view of performance, obligations and priorities.'}
+    ],
     faq:[
       ['What types of businesses does Tax Grid Consultants support?','Tax Grid Consultants supports start-ups, owner-managed businesses and growing companies in Mauritius, including employers that need payroll or recurring compliance support.'],
       ['Can Tax Grid Consultants take over from another accountant?','Yes. The current position, available records, access and outstanding work first need to be reviewed so that responsibilities and handover requirements are clear.'],
@@ -41,7 +48,7 @@ const content = {
     ]
   },
   fr: {
-    languageName: 'Français', htmlLang: 'fr',
+    languageName: 'Français', htmlLang: 'fr', flowAria:'Les informations financières évoluent des dossiers vers les décisions',
     static: {
       skip:'Aller au contenu', openMenu:'Ouvrir le menu', navServices:'Services', navWhy:'Pourquoi Tax Grid', navAbout:'À propos', navContact:'Contact', book:'Demander une consultation',
       heroLabel:'COMPTABILITÉ · FISCALITÉ · PAIE · CONSEIL', heroTitle:'Des chiffres clairs.<br>Des obligations maîtrisées.<br><em>De meilleures décisions.</em>', heroLead:'Tax Grid Consultants relie comptabilité, fiscalité, paie et rapports de gestion afin d’aider les entreprises à Maurice à rester organisées, respecter leurs obligations et comprendre leur situation financière.', exploreServices:'Découvrir nos services', heroNote:'Un accompagnement professionnel conçu autour du fonctionnement réel de votre entreprise.',
@@ -49,7 +56,7 @@ const content = {
       trustMauritius:'Accompagnement axé sur Maurice', trustConnected:'Comptabilité, fiscalité et paie connectées', trustConfidential:'Traitement confidentiel', trustXero:'Partenaire Xero',
       momentsLabel:'CONÇU AUTOUR DE VOTRE ENTREPRISE', momentsTitle:'Un soutien aux moments qui comptent.', momentsLead:'Commencez par la situation de votre entreprise. Tax Grid Consultants réunit l’accompagnement comptable, fiscal, de paie et de rapports de gestion pertinent autour de vos besoins.',
       servicesLabel:'NOS SERVICES', servicesTitle:'Comptabilité et conformité, reliées dans un même processus.', servicesLead:'Choisissez le domaine dont vous avez besoin. L’ensemble reste organisé dans une relation professionnelle claire.', discussService:'Discuter de ce service',
-      connectedLabel:'GESTION FINANCIÈRE CONNECTÉE', connectedTitle:'Vos responsabilités financières ne fonctionnent pas séparément.', connectedLead:'La paie affecte la comptabilité. La comptabilité soutient la fiscalité. Les rapports de gestion transforment ces données en informations utiles. Tax Grid Consultants maintient ces responsabilités connectées afin que chaque étape repose sur des dossiers plus clairs et plus fiables.', flowRecords:'Dossiers', flowPayroll:'Paie', flowTax:'Fiscalité', flowReporting:'Rapports', flowDecisions:'Décisions',
+      connectedLabel:'GESTION FINANCIÈRE CONNECTÉE', connectedTitle:'Vos responsabilités financières ne fonctionnent pas séparément.', connectedLead:'Les pièces et données alimentent la comptabilité. La comptabilité et la paie soutiennent les obligations fiscales et employeur. Les rapports transforment ces informations connectées en une vision plus claire pour décider. Tax Grid Consultants maintient l’ensemble du processus organisé.', flowRecords:'Dossiers', flowAccounting:'Comptabilité', flowObligations:'Obligations', flowReporting:'Rapports', flowDecisions:'Décisions',
       whyLabel:'POURQUOI TAX GRID CONSULTANTS', whyTitle:'Un accompagnement professionnel qui reste pratique.', whyOneTitle:'Connaissance du contexte mauricien', whyOneText:'Un accompagnement comptable et fiscal adapté à l’environnement local.', whyTwoTitle:'Responsabilités connectées', whyTwoText:'Comptabilité, fiscalité, paie et rapports de gestion sont gérés comme des domaines liés.', whyThreeTitle:'Communication directe', whyThreeText:'Des explications claires sans complexité inutile.', whyFourTitle:'Méthodes de travail structurées', whyFourText:'Des dossiers numériques structurés, des processus clairs et des systèmes comptables pratiques.',
       processLabel:'NOTRE MÉTHODE', processOneTitle:'Comprendre', processOneText:'Examiner l’entreprise, les dossiers et les responsabilités actuelles.', processTwoTitle:'Organiser', processTwoText:'Identifier les informations, systèmes et échéances nécessaires.', processThreeTitle:'Gérer', processThreeText:'Réaliser les travaux comptables, de paie, fiscaux et de rapports de gestion convenus.', processFourTitle:'Revoir', processFourText:'Discuter des résultats, points en suspens et prochaines priorités.',
       aboutLabel:'À PROPOS DE TAX GRID CONSULTANTS', aboutTitle:'Un cabinet comptable fondé sur la clarté et le contrôle.', aboutTextOne:'Tax Grid Consultants Limited accompagne les entreprises à Maurice grâce à des services connectés de comptabilité, fiscalité, paie, rapports de gestion, services aux sociétés et assistance Xero—dans une relation professionnelle structurée et directe.', aboutTextTwo:'L’objectif est simple : organiser le processus financier, expliquer ce qui compte et aider les dirigeants à utiliser leurs informations avec plus de confiance.', startConversation:'Demander une consultation',
@@ -72,6 +79,13 @@ const content = {
       {name:'Services aux sociétés',headline:'Un accompagnement structuré pour la création et les obligations courantes.',description:'Assistance à la constitution, aux informations de la société et à certaines obligations récurrentes.',highlights:['Constitution de société','Déclarations annuelles','Bénéficiaires effectifs','Modifications des informations de société']},
       {name:'Assistance Xero',headline:'Un système comptable pratique configuré autour de l’entreprise.',description:'Assistance pour la mise en place, la migration, les processus de travail, les rapprochements, les rapports et la formation des utilisateurs.',highlights:['Mise en place et migration','Plan comptable','Processus de rapprochement','Formation et assistance continue']}
     ],
+    flowDetails:[
+      {title:'Dossiers structurés',description:'Les factures, mouvements bancaires et pièces justificatives sont rassemblés et organisés.'},
+      {title:'Comptabilité tenue',description:'Les opérations sont enregistrées et rapprochées afin de préserver une situation financière fiable.'},
+      {title:'Obligations gérées',description:'La paie, la TVA, la fiscalité et les obligations employeur sont préparées à partir de dossiers connectés.'},
+      {title:'Rapports rendus utiles',description:'Les informations financières sont présentées sous forme de rapports clairs et de points à suivre.'},
+      {title:'Décisions mieux éclairées',description:'Les dirigeants disposent d’une vision plus claire des performances, obligations et priorités.'}
+    ],
     faq:[
       ['Quels types d’entreprises Tax Grid Consultants accompagne-t-il ?','Tax Grid Consultants accompagne principalement aux start-ups, entreprises dirigées par leurs propriétaires et sociétés en croissance à Maurice, y compris les employeurs ayant besoin de paie ou de conformité récurrente.'],
       ['Tax Grid Consultants peut-il reprendre le dossier d’un autre comptable ?','Oui. Il faut d’abord examiner la situation actuelle, les dossiers disponibles, les accès et les travaux en suspens afin de clarifier les responsabilités et le transfert.'],
@@ -82,7 +96,7 @@ const content = {
     ]
   },
   mfe: {
-    languageName: 'Kreol Morisien', htmlLang: 'mfe',
+    languageName: 'Kreol Morisien', htmlLang: 'mfe', flowAria:'Lenformasion finansier avanse depi dosie ziska desizion',
     static: {
       skip:'Al direk lor konteni', openMenu:'Ouver meni', navServices:'Servis', navWhy:'Kifer Tax Grid', navAbout:'Lor nou', navContact:'Kontak', book:'Demann enn konsiltasion',
       heroLabel:'KONTABILITE · TAX · LAPEY · KONSEY', heroTitle:'Bann sif kler.<br>Bann lobligasion sou kontrol.<br><em>Bann meyer desizion.</em>', heroLead:'Tax Grid Consultants konekte kontabilite, tax, lapey ek rapor zestion pou ed bann lantrepriz Moris reste organize, respekte zot bann lobligasion ek konpran zot pozision finansier.', exploreServices:'Dekouver nou servis', heroNote:'Enn sipor profesionel adapte ar fason ou biznes fonksione.',
@@ -90,7 +104,7 @@ const content = {
       trustMauritius:'Sipor axe lor Moris', trustConnected:'Kontabilite, tax ek lapey konekte', trustConfidential:'Tretman konfidansiel', trustXero:'Partener Xero',
       momentsLabel:'FER POU OU BIZNES', momentsTitle:'Sipor dan bann moman ki konte.', momentsLead:'Koumans ar sitiasion ou biznes. Tax Grid Consultants rasanble sipor kontabilite, tax, lapey ek rapor zestion ki pli adapte ar ou bezwen.',
       servicesLabel:'NOU SERVIS', servicesTitle:'Kontabilite ek konformite ki reste konekte.', servicesLead:'Swazir domenn ki ou bizin. Prosesis an antie res organize dan enn relasion profesionel kler.', discussService:'Koz lor sa servis-la',
-      connectedLabel:'ZESTION FINANSIER KONEKTE', connectedTitle:'Ou bann responsabilite finansier pa fonksione separeman.', connectedLead:'Lapey ena enn lefe lor kontabilite. Kontabilite soutenir tax. Rapor zestion transform bann dosie an lenformasion itil. Tax Grid Consultants gard sa bann responsabilite-la konekte pou ki sak etap baze lor bann dosie pli kler ek pli fiab.', flowRecords:'Dosie', flowPayroll:'Lapey', flowTax:'Tax', flowReporting:'Rapor', flowDecisions:'Desizion',
+      connectedLabel:'ZESTION FINANSIER KONEKTE', connectedTitle:'Ou bann responsabilite finansier pa fonksione separeman.', connectedLead:'Bann dokiman ek done soutenir kontabilite. Kontabilite ek lapey soutenir bann lobligasion tax ek anplwayer. Rapor transform sa bann lenformasion konekte-la an enn vizion pli kler pou pran desizion. Tax Grid Consultants gard prosesis-la organize depi koumansman ziska lafin.', flowRecords:'Dosie', flowAccounting:'Kontabilite', flowObligations:'Lobligasion', flowReporting:'Rapor', flowDecisions:'Desizion',
       whyLabel:'KIFER TAX GRID CONSULTANTS', whyTitle:'Enn sipor profesionel ki res pratik.', whyOneTitle:'Konesans lor kontext Moris', whyOneText:'Sipor kontabilite ek tax adapte ar lanvironnman biznes lokal.', whyTwoTitle:'Responsabilite konekte', whyTwoText:'Kontabilite, tax, lapey ek rapor zestion zere kouma bann domenn ki lie.', whyThreeTitle:'Kominikasion direk', whyThreeText:'Bann lexplikasion kler san konplikasion initil.', whyFourTitle:'Metod travay striktire', whyFourText:'Bann dosie dizital organize, prosesis kler ek sistem kontab pratik.',
       processLabel:'KOUMA NOU TRAVAY', processOneTitle:'Konpran', processOneText:'Revwar biznes, dosie ek bann responsabilite aktiel.', processTwoTitle:'Organize', processTwoText:'Idantifie bann lenformasion, sistem ek delai ki bizin.', processThreeTitle:'Zere', processThreeText:'Fer travay kontabilite, lapey, tax ek rapor zestion ki finn dakor.', processFourTitle:'Revwar', processFourText:'Diskit bann rezilta, bann pwin an suspans ek prosenn priorite.',
       aboutLabel:'LOR TAX GRID CONSULTANTS', aboutTitle:'Enn pratik kontab baze lor klarte ek kontrol.', aboutTextOne:'Tax Grid Consultants Limited soutenir bann lantrepriz Moris atraver bann servis konekte dan kontabilite, tax, lapey, rapor zestion, servis pou konpagni ek sipor Xero—dan enn relasion profesionel organize ek direk.', aboutTextTwo:'Bi-la sinp: gard prosesis finansier organize, explik seki inportan ek ed bann proprieter biznes servi zot lenformasion avek plis konfians.', startConversation:'Demann enn konsiltasion',
@@ -112,6 +126,13 @@ const content = {
       {name:'Rapor zestion ek konsey',headline:'Lenformasion finansier pou ed proprieter konpran performans.',description:'Rapor zestion, revizion marz, vizibilite lor kou ek bann diskision pratik pou fer kontabilite vinn pli itil.',highlights:['Kont zestion','Vizibilite lor flux kas','Revizion marz ek kou','Bidze ek prozektion']},
       {name:'Servis pou konpagni',headline:'Enn sipor organize pou kreasion ek bann lobligasion regilie.',description:'Asistans pou inkorporasion, lenformasion konpani ek sertin responsabilite regilie.',highlights:['Inkorporasion konpani','Annual Return (deklarasion aniel)','Sipor pou deklarasion benefisier reel','Sanzman lenformasion konpani']},
       {name:'Sipor Xero',headline:'Enn sistem kontab pratik adapte ar biznes.',description:'Sipor pou miz-an-plas, migrasion, prosesis travay, rekonsiliasion, rapor zestion ek formasion pou itilizater.',highlights:['Miz-an-plas ek migrasion','Plan kontab','Prosesis rekonsiliasion','Formasion ek sipor kontinie']}
+    ],
+    flowDetails:[
+      {title:'Dosie organize',description:'Faktir, mouvman labank ek dokiman sours rasanble ek klase dan enn fason kler.'},
+      {title:'Kontabilite azour',description:'Bann tranzaksion anrezistre ek rekonsilie pou gard pozision finansier fiab.'},
+      {title:'Lobligasion zere',description:'Lapey, VAT, tax ek responsabilite anplwayer prepare depi bann dosie konekte.'},
+      {title:'Rapor vinn itil',description:'Lenformasion finansier prezante dan bann rapor kler ek bann pwin ki bizin latansion.'},
+      {title:'Desizion pli kler',description:'Proprieter biznes kapav azir avek enn pli bon vizion lor performans, lobligasion ek priorite.'}
     ],
     faq:[
       ['Ki kalite biznes Tax Grid Consultants soutenir?','Tax Grid Consultants soutenir prinsipalman bann start-up, bann biznes dirize par zot proprieter ek bann konpani ki pe grandi Moris, inklir bann anplwayer ki bizin sipor lapey ouswa konformite regilie.'],
@@ -144,7 +165,7 @@ const metaByLanguage = {
   }
 };
 
-const state = {lang: safeStorage.get('tgc-language') || 'en', moment: 0, service: 0};
+const state = {lang: safeStorage.get('tgc-language') || 'en', moment: 0, service: 0, flow: 0};
 if (!content[state.lang]) state.lang = 'en';
 
 const qs = (selector,scope=document)=>scope.querySelector(selector);
@@ -382,6 +403,7 @@ function setLanguage(lang){
     translateStatic();
     renderMoments({rebuild:true});
     renderServices({rebuild:true});
+    renderFlow();
     renderFaq();
     renderServiceSelect();
     renderFooterLanguages();
@@ -436,7 +458,7 @@ qsa('.primary-nav a,.header-actions a').forEach(link=>link.addEventListener('cli
 }));
 
 const header=qs('[data-header]');
-function updateHeader(){ header.classList.toggle('scrolled',window.scrollY>18); }
+function updateHeader(){ header.classList.toggle('scrolled',window.scrollY>88); }
 window.addEventListener('scroll',updateHeader,{passive:true});
 updateHeader();
 
@@ -455,23 +477,63 @@ qsa('.reveal').forEach((el,index)=>{
   revealObserver?revealObserver.observe(el):el.classList.add('visible');
 });
 
-const flowMap=qs('.flow-map');
+const flowMap=qs('[data-flow-map]');
+let flowTimers=[];
+function clearFlowTimers(){ flowTimers.forEach(id=>window.clearTimeout(id)); flowTimers=[]; }
+
+function renderFlow({animate=false}={}){
+  if(!flowMap) return;
+  const items=content[state.lang].flowDetails;
+  flowMap.setAttribute('aria-label',content[state.lang].flowAria);
+  const nodes=qsa('[data-flow-index]',flowMap);
+  const detail=qs('[data-flow-detail]');
+  const apply=()=>{
+    const item=items[state.flow];
+    const progress=items.length>1?state.flow/(items.length-1):1;
+    flowMap.style.setProperty('--flow-progress',String(progress));
+    nodes.forEach((node,index)=>{
+      const active=index===state.flow;
+      node.classList.toggle('is-active',active);
+      node.classList.toggle('is-complete',index<state.flow);
+      node.setAttribute('aria-pressed',String(active));
+      node.tabIndex=active?0:-1;
+    });
+    qs('[data-flow-number]').textContent=String(state.flow+1).padStart(2,'0');
+    qs('[data-flow-title]').textContent=item.title;
+    qs('[data-flow-description]').textContent=item.description;
+  };
+  if(animate) animateSwap(detail,apply,{outClass:'is-switching-out',inClass:'is-switching-in',delay:110}); else apply();
+}
+
+function setFlow(index,{animate=true,stopAuto=true}={}){
+  const items=content[state.lang].flowDetails;
+  if(index<0||index>=items.length) return;
+  if(stopAuto) clearFlowTimers();
+  if(index===state.flow){ renderFlow(); return; }
+  state.flow=index;
+  renderFlow({animate});
+}
+
 if(flowMap){
+  const nodes=qsa('[data-flow-index]',flowMap);
+  nodes.forEach((node,index)=>{
+    node.addEventListener('click',()=>setFlow(index));
+    node.addEventListener('mouseenter',()=>setFlow(index));
+    node.addEventListener('focus',()=>setFlow(index));
+    node.addEventListener('keydown',event=>activateTabFromKey(event,nodes,index,next=>setFlow(next)));
+  });
   const runFlow=()=>{
-    if(flowMap.dataset.played==='true') return;
+    if(flowMap.dataset.played==='true'||reducedMotion) return;
     flowMap.dataset.played='true';
-    flowMap.classList.add('flow-animate');
-    const nodes=qsa('.flow-node',flowMap);
-    nodes.forEach((node,index)=>window.setTimeout(()=>{
-      nodes.forEach((other,otherIndex)=>other.classList.toggle('is-active',otherIndex===index));
-      node.classList.add('is-complete');
-    },260+index*420));
-    window.setTimeout(()=>nodes.forEach(node=>node.classList.remove('is-active')),260+nodes.length*420+350);
+    clearFlowTimers();
+    content[state.lang].flowDetails.forEach((_,index)=>{
+      flowTimers.push(window.setTimeout(()=>setFlow(index,{animate:index>0,stopAuto:false}),250+index*690));
+    });
   };
   if('IntersectionObserver' in window){
     const flowObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
       if(entry.isIntersecting){ runFlow(); flowObserver.disconnect(); }
-    }),{threshold:.35});
+    }),{threshold:.38});
     flowObserver.observe(flowMap);
   }else runFlow();
 }
@@ -529,6 +591,7 @@ qs('[data-year]').textContent=new Date().getFullYear();
 translateStatic();
 renderMoments({rebuild:true});
 renderServices({rebuild:true});
+renderFlow();
 renderFaq();
 renderServiceSelect();
 renderFooterLanguages();
