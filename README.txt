@@ -1,4 +1,4 @@
-TAX GRID CONSULTANTS — LOGO & HEADER REFINED DEPLOYMENT
+TAX GRID CONSULTANTS — UNIQUE SIGNATURE DEPLOYMENT
 
 Primary files
 - index.html
@@ -6,32 +6,31 @@ Primary files
 - app.js
 
 Brand assets
-- assets/tgc-logo-full-colour.png — original supplied logo
-- assets/tgc-logo-full-colour-transparent.png — exact-shape transparent web export for light surfaces
-- assets/tgc-logo-reversed.png — exact-shape white web export for dark surfaces
+- assets/tgc-logo-full-colour.png — supplied full-colour logo
+- assets/tgc-logo-full-colour-transparent.png — transparent logo for light surfaces
+- assets/tgc-logo-reversed-clean.png — clean white-and-gold logo for dark surfaces
 - assets/xero-logo-official-web.png — existing Xero asset
 
-Refinements included
-- Larger, sharper and better-balanced Tax Grid Consultants logo in the top bar
-- Subtle premium logo stage with refined spacing, border and hover treatment
-- Transparent full-colour logo on light backgrounds; reversed logo on dark backgrounds
-- Refined desktop, tablet and mobile logo sizing
-- Cleaner language control with consistent SVG icons
-- Unified trust-strip icon system and optically reduced Xero mark
-- Removal of the unsupported 74% hero figure
-- Removal of unnecessary numbering outside true sequences
-- Full Tax Grid Consultants naming in public copy instead of repeated TGC abbreviations
-- Consistent “Request a consultation” CTA wording
-- English, French and Kreol Morisien copy improvements
-- Official brand mark used in the About visual instead of a second pseudo-logo
-- Footer logo presented without a white box
+Distinctive refinements included
+- Original floating “ledger bar” header rather than a generic full-width navigation strip
+- Refined logo plaque with a subtle red-to-gold signature rail and micro-accent
+- More balanced logo, navigation, language control and consultation CTA alignment
+- Compact gradient nav indicator rather than a standard full underline
+- Original connected-accounting constellation in the About section
+- Integrated clean reversed logo instead of the previous noisy/pasted logo image
+- Purposeful record, payroll and reporting modules connected by visual paths
+- Softer gold verification marker and subtle red/gold corner signature
+- Consistent light, shadow, radius and material treatment across header and About visual
+- Responsive refinements for desktop, tablet and mobile
+- Cache-busted stylesheet reference for clean deployment
 
 Deployment note
-Upload the contents of this folder over the current homepage build. Keep the existing production form integration, privacy pages, favicon and other verified production assets if they are already connected in the live deployment.
+Upload the contents of this folder over the current homepage build. Preserve any production form integration, privacy pages, favicon and other verified production assets already connected to the live deployment.
 
 Production checks
-- Confirm the enquiry form still sends successfully after merge
-- Verify the three languages on desktop and mobile
-- Confirm Xero partner-branding permission and current wording
-- Check header logo sharpness at 100% and 125% browser zoom
-- Confirm no cached older styles remain; the stylesheet is versioned in index.html
+- Hard refresh after deployment to clear older CSS
+- Confirm the enquiry form still sends successfully
+- Verify English, French and Kreol Morisien on desktop and mobile
+- Check the header at 100%, 110%, 125% and 150% browser zoom
+- Confirm the menu remains fully usable at tablet widths
+- Confirm the clean reversed logo displays correctly on the dark footer and About visual
