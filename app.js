@@ -501,11 +501,11 @@ function measureBrandIntro(){
 function applyBrandIntro(progress){
   if(!isHomePage || !brandIntro || !brandMorph || !header || !introMetrics) return;
   const p=clamp(progress,0,1);
-  const move=smoothstep((p-.08)/.84);
-  const copyOut=smoothstep((p-.46)/.36);
-  const cueOut=smoothstep((p-.10)/.30);
-  const headerIn=smoothstep((p-.44)/.36);
-  const handoff=smoothstep((p-.84)/.14);
+  const move=smoothstep((p-.10)/.86);
+  const copyOut=smoothstep((p-.48)/.34);
+  const cueOut=smoothstep((p-.07)/.23);
+  const headerIn=smoothstep((p-.38)/.39);
+  const handoff=smoothstep((p-.89)/.10);
   const target=introMetrics;
   const x=mix(0,target.targetX-target.startX,move);
   const y=mix(0,target.targetY-target.startY,move);
@@ -524,13 +524,13 @@ function applyBrandIntro(progress){
   header.style.setProperty('--header-logo-opacity',handoff.toFixed(3));
   header.classList.toggle('intro-visible',headerIn>.04);
   header.classList.toggle('intro-complete',p>.96);
-  header.style.pointerEvents=headerIn>.28?'auto':'none';
+  header.style.pointerEvents=headerIn>.24?'auto':'none';
 }
 
 function animateBrandIntro(){
   introFrame=0;
   const delta=introTarget-introCurrent;
-  introCurrent+=delta*.095;
+  introCurrent+=delta*.105;
   if(Math.abs(delta)<.00055) introCurrent=introTarget;
   applyBrandIntro(introCurrent);
   if(introCurrent!==introTarget) introFrame=requestAnimationFrame(animateBrandIntro);
