@@ -467,6 +467,7 @@ const brandMorph=qs('[data-brand-morph]');
 const brandIntroCopy=qs('[data-brand-intro-copy]');
 const brandIntroScroll=qs('[data-brand-intro-scroll]');
 const headerLogoTarget=qs('.site-header .brand-logo-stage');
+const heroSection=qs('.home-page .hero');
 
 function clamp(value,min,max){ return Math.min(max,Math.max(min,value)); }
 function mix(from,to,progress){ return from+(to-from)*progress; }
@@ -482,55 +483,65 @@ function measureBrandIntro(){
   const viewportWidth=window.innerWidth;
   const viewportHeight=window.innerHeight;
   const isMobile=viewportWidth<=720;
-  const baseWidth=Math.round(Math.min(viewportWidth*(isMobile ? .82 : .45),isMobile?440:630));
+  const baseWidth=Math.round(Math.min(viewportWidth*(isMobile ? .82 : .43),isMobile?440:560));
   brandMorph.style.width=`${baseWidth}px`;
   const targetRect=headerLogoTarget.getBoundingClientRect();
   const startX=viewportWidth/2;
-  const startY=viewportHeight*(isMobile ? .43 : .44);
+  const startY=viewportHeight*(isMobile ? .388 : .422);
+  const plaqueWidth=Math.min(viewportWidth*(isMobile?.93:.73),isMobile?viewportWidth*.93:900);
   introMetrics={
     range:Math.max(1,brandIntro.offsetHeight-viewportHeight),
     baseWidth,
+    plaqueWidth,
     startX,
     startY,
     targetX:targetRect.left+targetRect.width/2,
     targetY:targetRect.top+targetRect.height/2,
-    targetScale:Math.max(.08,targetRect.width/baseWidth)
+    targetScale:Math.max(.08,targetRect.width/baseWidth),
+    plaqueTargetScale:Math.max(.06,(targetRect.width*1.35)/plaqueWidth)
   };
 }
 
 function applyBrandIntro(progress){
   if(!isHomePage || !brandIntro || !brandMorph || !header || !introMetrics) return;
   const p=clamp(progress,0,1);
-  const move=smoothstep((p-.10)/.86);
-  const copyOut=smoothstep((p-.48)/.34);
-  const cueOut=smoothstep((p-.07)/.23);
-  const headerIn=smoothstep((p-.38)/.39);
-  const handoff=smoothstep((p-.89)/.10);
+  const move=smoothstep((p-.24)/.56);
+  const copyOut=smoothstep((p-.22)/.26);
+  const cueOut=smoothstep((p-.04)/.17);
+  const headerIn=smoothstep((p-.50)/.22);
+  const handoff=smoothstep((p-.50)/.22);
+  const heroReveal=smoothstep((p-.17)/.38);
   const target=introMetrics;
   const x=mix(0,target.targetX-target.startX,move);
   const y=mix(0,target.targetY-target.startY,move);
   const scale=mix(1,target.targetScale,move);
-  const tilt=0;
-  brandMorph.style.setProperty('--morph-x',`${x.toFixed(2)}px`);
-  brandMorph.style.setProperty('--morph-y',`${y.toFixed(2)}px`);
-  brandMorph.style.setProperty('--morph-scale',scale.toFixed(5));
-  brandMorph.style.setProperty('--morph-rotate',`${tilt.toFixed(2)}deg`);
+  const plaqueScale=mix(1,target.plaqueTargetScale,move);
+  const plaqueOpacity=1-smoothstep((p-.48)/.22);
+
+  brandIntro.style.setProperty('--plaque-x',`${x.toFixed(2)}px`);
+  brandIntro.style.setProperty('--plaque-y',`${y.toFixed(2)}px`);
+  brandIntro.style.setProperty('--plaque-scale',plaqueScale.toFixed(5));
+  brandIntro.style.setProperty('--plaque-opacity',plaqueOpacity.toFixed(3));
   brandMorph.style.setProperty('--morph-opacity',(1-handoff).toFixed(3));
   brandIntro.style.setProperty('--intro-progress',p.toFixed(4));
   brandIntro.style.setProperty('--intro-copy-opacity',(1-copyOut).toFixed(3));
-  brandIntro.style.setProperty('--intro-copy-y',`${mix(0,-16,copyOut).toFixed(2)}px`);
+  brandIntro.style.setProperty('--intro-copy-y',`${mix(0,-12,copyOut).toFixed(2)}px`);
   brandIntro.style.setProperty('--intro-scroll-opacity',(1-cueOut).toFixed(3));
   header.style.setProperty('--intro-header-opacity',headerIn.toFixed(3));
   header.style.setProperty('--header-logo-opacity',handoff.toFixed(3));
+  if(heroSection){
+    heroSection.style.setProperty('--hero-intro-opacity',heroReveal.toFixed(3));
+    heroSection.style.setProperty('--hero-intro-y',`${mix(44,0,heroReveal).toFixed(2)}px`);
+  }
   header.classList.toggle('intro-visible',headerIn>.04);
   header.classList.toggle('intro-complete',p>.96);
-  header.style.pointerEvents=headerIn>.24?'auto':'none';
+  header.style.pointerEvents=headerIn>.35?'auto':'none';
 }
 
 function animateBrandIntro(){
   introFrame=0;
   const delta=introTarget-introCurrent;
-  introCurrent+=delta*.105;
+  introCurrent+=delta*.14;
   if(Math.abs(delta)<.00055) introCurrent=introTarget;
   applyBrandIntro(introCurrent);
   if(introCurrent!==introTarget) introFrame=requestAnimationFrame(animateBrandIntro);
@@ -547,7 +558,7 @@ function updateHeader(){
   introTarget=clamp(window.scrollY/range,0,1);
   if(reducedMotion) introCurrent=introTarget;
   if(!introFrame) introFrame=requestAnimationFrame(animateBrandIntro);
-  header.classList.toggle('scrolled',window.scrollY>range+40);
+  header.classList.toggle('scrolled',window.scrollY>range+30);
 }
 
 window.addEventListener('scroll',updateHeader,{passive:true});

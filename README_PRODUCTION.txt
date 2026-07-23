@@ -1,14 +1,12 @@
-TAX GRID CONSULTANTS — CLEAN PRODUCTION BUILD
+TAX GRID CONSULTANTS — FINAL PREMIUM MORPH BUILD
 
-This package consolidates the homepage brand experience into one authoritative CSS system.
+This build corrects the intro-to-homepage transition:
+- large crisp logo and plaque remain together during the morph
+- no empty plaque or blank scroll interval
+- hero content rises early while the logo condenses
+- compact header and logo fade in together
+- desktop, tablet and mobile use tuned overlap distances
+- reduced-motion users receive an immediately usable static state
 
-Final corrections included:
-- crisp high-density official logo on homepage and legal pages
-- single clean intro/header/financial-flow implementation
-- 170px desktop intro scroll range for faster access to useful content
-- logo artwork remains undistorted and unfiltered
-- plaque/background provides depth instead of image filters
-- legal pages share the same cache-busted stylesheet
-- individual income tax content remains included under Tax & VAT
-
-Before public replacement, preserve any hosting-specific form or analytics configuration not stored in this package.
+Deploy the complete folder contents to the web root.
+Preserve the assets directory and the relative file structure.
