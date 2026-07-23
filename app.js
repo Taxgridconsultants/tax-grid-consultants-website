@@ -483,55 +483,56 @@ function measureBrandIntro(){
   const viewportWidth=window.innerWidth;
   const viewportHeight=window.innerHeight;
   const isMobile=viewportWidth<=720;
-  const baseWidth=Math.round(Math.min(viewportWidth*(isMobile ? .82 : .43),isMobile?440:560));
+  const baseWidth=Math.round(Math.min(viewportWidth*(isMobile ? .80 : .44),isMobile?470:590));
   brandMorph.style.width=`${baseWidth}px`;
   const targetRect=headerLogoTarget.getBoundingClientRect();
   const startX=viewportWidth/2;
-  const startY=viewportHeight*(isMobile ? .388 : .422);
-  const plaqueWidth=Math.min(viewportWidth*(isMobile?.93:.73),isMobile?viewportWidth*.93:900);
+  const startY=viewportHeight*(isMobile ? .388 : .42);
   introMetrics={
     range:Math.max(1,brandIntro.offsetHeight-viewportHeight),
     baseWidth,
-    plaqueWidth,
     startX,
     startY,
     targetX:targetRect.left+targetRect.width/2,
     targetY:targetRect.top+targetRect.height/2,
-    targetScale:Math.max(.08,targetRect.width/baseWidth),
-    plaqueTargetScale:Math.max(.06,(targetRect.width*1.35)/plaqueWidth)
+    targetScale:Math.max(.08,targetRect.width/baseWidth)
   };
 }
 
 function applyBrandIntro(progress){
   if(!isHomePage || !brandIntro || !brandMorph || !header || !introMetrics) return;
   const p=clamp(progress,0,1);
-  const move=smoothstep((p-.24)/.56);
-  const copyOut=smoothstep((p-.22)/.26);
-  const cueOut=smoothstep((p-.04)/.17);
-  const headerIn=smoothstep((p-.50)/.22);
-  const handoff=smoothstep((p-.50)/.22);
-  const heroReveal=smoothstep((p-.17)/.38);
+  const move=smoothstep((p-.17)/.44);
+  const copyOut=smoothstep((p-.12)/.18);
+  const cueOut=smoothstep((p-.025)/.15);
+  const frameOut=smoothstep((p-.12)/.38);
+  const sceneOut=smoothstep((p-.28)/.64);
+  const headerIn=smoothstep((p-.48)/.20);
+  const handoff=smoothstep((p-.55)/.12);
+  const heroReveal=smoothstep((p-.12)/.42);
   const target=introMetrics;
   const x=mix(0,target.targetX-target.startX,move);
   const y=mix(0,target.targetY-target.startY,move);
   const scale=mix(1,target.targetScale,move);
-  const plaqueScale=mix(1,target.plaqueTargetScale,move);
-  const plaqueOpacity=1-smoothstep((p-.48)/.22);
 
-  brandIntro.style.setProperty('--plaque-x',`${x.toFixed(2)}px`);
-  brandIntro.style.setProperty('--plaque-y',`${y.toFixed(2)}px`);
-  brandIntro.style.setProperty('--plaque-scale',plaqueScale.toFixed(5));
-  brandIntro.style.setProperty('--plaque-opacity',plaqueOpacity.toFixed(3));
+  brandIntro.style.setProperty('--stage-x',`${x.toFixed(2)}px`);
+  brandIntro.style.setProperty('--stage-y',`${y.toFixed(2)}px`);
+  brandIntro.style.setProperty('--stage-scale',scale.toFixed(5));
+  brandIntro.style.setProperty('--stage-opacity',(1-handoff).toFixed(3));
   brandMorph.style.setProperty('--morph-opacity',(1-handoff).toFixed(3));
   brandIntro.style.setProperty('--intro-progress',p.toFixed(4));
   brandIntro.style.setProperty('--intro-copy-opacity',(1-copyOut).toFixed(3));
-  brandIntro.style.setProperty('--intro-copy-y',`${mix(0,-12,copyOut).toFixed(2)}px`);
+  brandIntro.style.setProperty('--intro-copy-y',`${mix(0,-18,copyOut).toFixed(2)}px`);
   brandIntro.style.setProperty('--intro-scroll-opacity',(1-cueOut).toFixed(3));
+  brandIntro.style.setProperty('--frame-opacity',(1-frameOut).toFixed(3));
+  brandIntro.style.setProperty('--scene-opacity',mix(1,.12,sceneOut).toFixed(3));
+  brandIntro.style.setProperty('--scene-lift',`${mix(0,-34,sceneOut).toFixed(2)}px`);
   header.style.setProperty('--intro-header-opacity',headerIn.toFixed(3));
   header.style.setProperty('--header-logo-opacity',handoff.toFixed(3));
   if(heroSection){
     heroSection.style.setProperty('--hero-intro-opacity',heroReveal.toFixed(3));
-    heroSection.style.setProperty('--hero-intro-y',`${mix(44,0,heroReveal).toFixed(2)}px`);
+    heroSection.style.setProperty('--hero-intro-y',`${mix(62,0,heroReveal).toFixed(2)}px`);
+    heroSection.style.setProperty('--hero-intro-scale',mix(.985,1,heroReveal).toFixed(4));
   }
   header.classList.toggle('intro-visible',headerIn>.04);
   header.classList.toggle('intro-complete',p>.96);
@@ -541,7 +542,7 @@ function applyBrandIntro(progress){
 function animateBrandIntro(){
   introFrame=0;
   const delta=introTarget-introCurrent;
-  introCurrent+=delta*.14;
+  introCurrent+=delta*.22;
   if(Math.abs(delta)<.00055) introCurrent=introTarget;
   applyBrandIntro(introCurrent);
   if(introCurrent!==introTarget) introFrame=requestAnimationFrame(animateBrandIntro);
