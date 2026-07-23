@@ -54,3 +54,5 @@ FINAL BRAND INTRO MORPH
 - The same official logo scales and travels smoothly into the compact header while scrolling.
 - The existing hero remains intact and follows immediately after the brand introduction.
 - Legal pages retain the normal compact header.
+
+Refinement: shortened intro scroll distance, removed empty transition gap, added hero overlap and retina logo asset.

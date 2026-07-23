@@ -25,7 +25,7 @@ const content = {
     ],
     services: [
       {name:'Accounting & Bookkeeping',headline:'Reliable financial records that support reporting and compliance.',description:'Tax Grid Consultants helps maintain organised accounting records, reconciliations and year-end readiness so business information can be used with greater confidence.',highlights:['Bookkeeping','Bank and control-account reconciliations','Year-end readiness','Financial record maintenance']},
-      {name:'Tax & VAT',headline:'Clear management of recurring tax responsibilities.',description:'Support with tax, VAT and related obligations based on the records and information provided under the agreed engagement.',highlights:['Corporate and individual tax support','VAT','TDS','Tax correspondence and regularisation support']},
+      {name:'Tax & VAT',headline:'Clear management of business and individual tax responsibilities.',description:'Support with corporate tax, individual income tax, VAT and related obligations based on the records and information provided under the agreed engagement.',highlights:['Corporate income tax','Individual income tax computations and returns','VAT and TDS','Tax correspondence and regularisation support']},
       {name:'Payroll',headline:'A controlled process from employee information to payslip and filing.',description:'Payroll processing, employee documentation and related employer responsibilities managed through an organised workflow.',highlights:['Payroll calculations','Payslips','Employer filings','Payroll reports']},
       {name:'Reporting & Advisory',headline:'Financial information that helps business owners understand performance.',description:'Management reporting, margin reviews, cost visibility and practical discussions designed to make accounting information more useful.',highlights:['Management accounts','Cash-flow visibility','Margin and cost reviews','Budgeting and projections']},
       {name:'Company Services',headline:'Structured support for company establishment and ongoing requirements.',description:'Assistance with incorporation, corporate information and selected recurring company obligations.',highlights:['Company incorporation','Annual returns','Beneficial ownership support','Corporate information changes']},
@@ -44,6 +44,7 @@ const content = {
       ['Can Tax Grid Consultants help bring incomplete records up to date?','Yes, subject to reviewing the records available, identifying missing information and agreeing a realistic scope and timetable.'],
       ['Is payroll available as a standalone service?','Yes. Payroll can be provided as a focused service or connected with wider accounting and employer compliance support.'],
       ['What information is needed for a quotation?','Usually the business activity, current accounting position, number of employees, filing frequency, software used and the specific support required.'],
+      ['Does Tax Grid Consultants prepare individual income tax returns?','Yes. Tax Grid Consultants assists employees, directors, self-employed persons, landlords and other individuals with income tax computations and annual return preparation and filing. Filing requirements depend on the individual’s circumstances.'],
       ['Does Tax Grid Consultants provide Xero setup and support?','Yes. Support can include setup, migration, workflows, reconciliations, reporting and user training.']
     ]
   },
@@ -73,7 +74,7 @@ const content = {
     ],
     services: [
       {name:'Comptabilité et tenue de livres',headline:'Des dossiers financiers fiables pour les rapports de gestion et la conformité.',description:'Tax Grid Consultants aide à maintenir des dossiers comptables organisés, des rapprochements et une préparation de fin d’exercice afin que les informations soient utilisées avec davantage de confiance.',highlights:['Tenue de livres','Rapprochements bancaires et comptes de contrôle','Préparation de fin d’exercice','Maintenance des dossiers financiers']},
-      {name:'Fiscalité et TVA',headline:'Une gestion claire des obligations fiscales récurrentes.',description:'Un accompagnement en fiscalité, TVA et obligations connexes sur la base des dossiers et informations fournis dans le cadre de la mission convenue.',highlights:['Fiscalité des sociétés et des particuliers','TVA','TDS','Correspondance fiscale et régularisation']},
+      {name:'Fiscalité et TVA',headline:'Une gestion claire des obligations fiscales des entreprises et des particuliers.',description:'Un accompagnement en matière d’impôt sur les sociétés, d’impôt sur le revenu des particuliers, de TVA et d’obligations connexes sur la base des dossiers et informations fournis dans le cadre de la mission convenue.',highlights:['Impôt sur les sociétés','Calculs et déclarations d’impôt sur le revenu des particuliers','TVA et TDS','Correspondance fiscale et régularisation']},
       {name:'Paie',headline:'Un processus maîtrisé des données salariés jusqu’aux fiches de paie et déclarations.',description:'Traitement de la paie, documentation des salariés et obligations employeur dans un flux de travail organisé.',highlights:['Calculs de paie','Fiches de paie','Déclarations employeur','Rapports de paie']},
       {name:'Rapports de gestion et conseil',headline:'Des informations financières pour mieux comprendre la performance.',description:'Rapports de gestion, revue des marges, visibilité sur les coûts et discussions pratiques pour rendre la comptabilité plus utile.',highlights:['Comptes de gestion','Visibilité de trésorerie','Analyse des marges et coûts','Budgets et projections']},
       {name:'Services aux sociétés',headline:'Un accompagnement structuré pour la création et les obligations courantes.',description:'Assistance à la constitution, aux informations de la société et à certaines obligations récurrentes.',highlights:['Constitution de société','Déclarations annuelles','Bénéficiaires effectifs','Modifications des informations de société']},
@@ -92,6 +93,7 @@ const content = {
       ['Tax Grid Consultants peut-il mettre à jour des dossiers incomplets ?','Oui, sous réserve d’examiner les éléments disponibles, d’identifier les informations manquantes et de convenir d’un périmètre et d’un calendrier réalistes.'],
       ['La paie est-elle disponible séparément ?','Oui. La paie peut être fournie seule ou reliée à un accompagnement comptable et employeur plus large.'],
       ['Quelles informations faut-il pour un devis ?','En général : l’activité, la situation comptable actuelle, le nombre de salariés, la fréquence des déclarations, le logiciel utilisé et le soutien recherché.'],
+      ['Tax Grid Consultants prépare-t-il les déclarations d’impôt sur le revenu des particuliers ?','Oui. Tax Grid Consultants accompagne les salariés, dirigeants, travailleurs indépendants, propriétaires bailleurs et autres particuliers pour les calculs d’impôt sur le revenu ainsi que la préparation et le dépôt de leur déclaration annuelle. L’obligation de déposer une déclaration dépend de la situation de chaque personne.'],
       ['Tax Grid Consultants propose-t-il la mise en place et l’assistance Xero ?','Oui. Cela peut inclure la mise en place, la migration, les processus de travail, les rapprochements, les rapports et la formation.']
     ]
   },
@@ -121,7 +123,7 @@ const content = {
     ],
     services: [
       {name:'Kontabilite ek teni liv',headline:'Bann dosie finansier fiab ki soutenir rapor zestion ek konformite.',description:'Tax Grid Consultants ed gard bann dosie kontab organize, fer rekonsiliasion ek prepar fin lane pou ki bann lenformasion biznes kapav servi avek plis konfians.',highlights:['Teni liv','Rekonsiliasion labank ek kont kontrol','Preparasion fin lane','Mintenir dosie finansier']},
-      {name:'Tax ek VAT',headline:'Enn zestion kler bann responsabilite tax regilie.',description:'Sipor pou tax, VAT ek lezot lobligasion baze lor bann dosie ek lenformasion ki finn donn dan kad mision ki finn dakor.',highlights:['Tax konpani ek individiel','VAT','TDS','Korespondans tax ek regilarizasion']},
+      {name:'Tax ek VAT',headline:'Enn zestion kler bann responsabilite tax pou biznes ek individi.',description:'Sipor pou tax lor reveni konpani, tax lor reveni individiel, VAT ek lezot lobligasion baze lor bann dosie ek lenformasion ki finn donn dan kad mision ki finn dakor.',highlights:['Tax lor reveni konpani','Kalkil ek deklarasion tax lor reveni individiel','VAT ek TDS','Korespondans tax ek regilarizasion']},
       {name:'Lapey',headline:'Enn prosesis sou kontrol depi lenformasion anplwaye ziska fich lapey ek deklarasion.',description:'Tretman lapey, dokiman anplwaye ek responsabilite anplwayer zere atraver enn prosesis travay organize.',highlights:['Kalkil lapey','Fich lapey','Deklarasion anplwayer','Raport lapey']},
       {name:'Rapor zestion ek konsey',headline:'Lenformasion finansier pou ed proprieter konpran performans.',description:'Rapor zestion, revizion marz, vizibilite lor kou ek bann diskision pratik pou fer kontabilite vinn pli itil.',highlights:['Kont zestion','Vizibilite lor flux kas','Revizion marz ek kou','Bidze ek prozektion']},
       {name:'Servis pou konpagni',headline:'Enn sipor organize pou kreasion ek bann lobligasion regilie.',description:'Asistans pou inkorporasion, lenformasion konpani ek sertin responsabilite regilie.',highlights:['Inkorporasion konpani','Annual Return (deklarasion aniel)','Sipor pou deklarasion benefisier reel','Sanzman lenformasion konpani']},
@@ -140,6 +142,7 @@ const content = {
       ['Tax Grid Consultants kapav met bann dosie inkonple azour?','Wi, apre revizion bann dosie disponib, idantifikasion bann lenformasion manke ek lakor lor enn kad travay ek delai realist.'],
       ['Lapey disponib kouma enn servis separe?','Wi. Lapey kapav fer tousel ouswa konekte ar enn sipor kontabilite ek anplwayer pli larz.'],
       ['Ki lenformasion bizin pou enn devi?','An zeneral: aktivite biznes, pozision kontab aktiel, kantite anplwaye, frekans deklarasion, lojisiel ki servi ek sipor ki bizin.'],
+      ['Tax Grid Consultants prepar deklarasion tax lor reveni individiel?','Wi. Tax Grid Consultants ed bann anplwaye, direkter, dimounn ki travay pou zotmem, propriyeter ki gagn reveni lokasion ek lezot individi pou kalkil tax lor reveni, preparasion ek depo deklarasion aniel. Lobligasion pou depoze depann lor sitiasion sak dimounn.'],
       ['Tax Grid Consultants fer miz-an-plas ek sipor Xero?','Wi. Sa kapav inklir miz-an-plas, migrasion, prosesis travay, rekonsiliasion, rapor zestion ek formasion.']
     ]
   }
@@ -479,7 +482,7 @@ function measureBrandIntro(){
   const viewportWidth=window.innerWidth;
   const viewportHeight=window.innerHeight;
   const isMobile=viewportWidth<=720;
-  const baseWidth=Math.min(viewportWidth*(isMobile ? .78 : .46),isMobile?430:610);
+  const baseWidth=Math.round(Math.min(viewportWidth*(isMobile ? .82 : .45),isMobile?440:630));
   brandMorph.style.width=`${baseWidth}px`;
   const targetRect=headerLogoTarget.getBoundingClientRect();
   const startX=viewportWidth/2;
@@ -498,16 +501,16 @@ function measureBrandIntro(){
 function applyBrandIntro(progress){
   if(!isHomePage || !brandIntro || !brandMorph || !header || !introMetrics) return;
   const p=clamp(progress,0,1);
-  const move=smoothstep((p-.12)/.76);
-  const copyOut=smoothstep((p-.12)/.32);
-  const cueOut=smoothstep(p/.22);
-  const headerIn=smoothstep((p-.62)/.24);
-  const handoff=smoothstep((p-.86)/.10);
+  const move=smoothstep((p-.08)/.84);
+  const copyOut=smoothstep((p-.46)/.36);
+  const cueOut=smoothstep((p-.10)/.30);
+  const headerIn=smoothstep((p-.44)/.36);
+  const handoff=smoothstep((p-.84)/.14);
   const target=introMetrics;
   const x=mix(0,target.targetX-target.startX,move);
   const y=mix(0,target.targetY-target.startY,move);
   const scale=mix(1,target.targetScale,move);
-  const tilt=mix(0,-1.1,move);
+  const tilt=0;
   brandMorph.style.setProperty('--morph-x',`${x.toFixed(2)}px`);
   brandMorph.style.setProperty('--morph-y',`${y.toFixed(2)}px`);
   brandMorph.style.setProperty('--morph-scale',scale.toFixed(5));

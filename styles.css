@@ -1341,6 +1341,39 @@ button.flow-node{
   .home-page .site-header .brand img{width:98px}
   .home-page .site-header:not(.scrolled) .header-inner{height:88px}
 }
+
+/* Refined intro pacing: the hero begins rising before the logo completes its handoff,
+   preventing an empty scroll interval and keeping useful information close. */
+.brand-intro-sticky::before{
+  content:"";
+  position:absolute;
+  left:50%;top:43%;
+  width:min(78vw,1040px);
+  aspect-ratio:1.7;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 46%,transparent 72%);
+  border:1px solid rgba(218,165,40,.08);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.78);
+  opacity:calc(.72 - var(--intro-progress) * .42);
+  pointer-events:none;
+  z-index:2;
+}
+.brand-intro-sticky::after{
+  height:26vh;
+  background:linear-gradient(180deg,transparent 0%,rgba(246,242,234,.88) 58%,#f6f2ea 100%);
+}
+.home-page .hero{
+  position:relative;
+  z-index:24;
+  margin-top:-110px;
+  border-radius:48px 48px 0 0;
+  box-shadow:0 -22px 60px rgba(21,23,27,.055);
+  border-top:1px solid rgba(255,255,255,.82);
+}
+.brand-intro-scroll{bottom:42px}
+.brand-morph-visual{filter:drop-shadow(0 28px 38px rgba(21,23,27,.14))}
+
 @media(max-width:900px){
   .home-page .site-header,
   .home-page .site-header.scrolled{padding-top:10px}
@@ -1577,6 +1610,39 @@ button.flow-node{
   .home-page .brand-intro-lockup{display:none}
   .home-page .hero{padding-top:166px}
 }
+
+/* Refined intro pacing: the hero begins rising before the logo completes its handoff,
+   preventing an empty scroll interval and keeping useful information close. */
+.brand-intro-sticky::before{
+  content:"";
+  position:absolute;
+  left:50%;top:43%;
+  width:min(78vw,1040px);
+  aspect-ratio:1.7;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 46%,transparent 72%);
+  border:1px solid rgba(218,165,40,.08);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.78);
+  opacity:calc(.72 - var(--intro-progress) * .42);
+  pointer-events:none;
+  z-index:2;
+}
+.brand-intro-sticky::after{
+  height:26vh;
+  background:linear-gradient(180deg,transparent 0%,rgba(246,242,234,.88) 58%,#f6f2ea 100%);
+}
+.home-page .hero{
+  position:relative;
+  z-index:24;
+  margin-top:-110px;
+  border-radius:48px 48px 0 0;
+  box-shadow:0 -22px 60px rgba(21,23,27,.055);
+  border-top:1px solid rgba(255,255,255,.82);
+}
+.brand-intro-scroll{bottom:42px}
+.brand-morph-visual{filter:drop-shadow(0 28px 38px rgba(21,23,27,.14))}
+
 @media(max-width:900px){
   .home-page .site-header{
     --header-height:72px!important;
@@ -1712,8 +1778,8 @@ button.flow-node{
   --intro-copy-y:0px;
   --intro-scroll-opacity:1;
   position:relative;
-  height:166vh;
-  min-height:980px;
+  height:calc(100svh + clamp(280px,34vh,360px));
+  min-height:860px;
   background:#f6f2ea;
   isolation:isolate;
 }
@@ -1763,7 +1829,7 @@ button.flow-node{
 .brand-intro-orbit{
   position:absolute;
   left:50%;
-  top:44%;
+  top:43%;
   width:min(70vw,920px);
   aspect-ratio:1.7;
   border:1px solid rgba(206,151,26,.14);
@@ -1837,8 +1903,8 @@ button.flow-node{
   position:absolute;
   inset:0;
   background:linear-gradient(110deg,transparent 33%,rgba(255,255,255,.82) 46%,rgba(245,190,58,.28) 51%,transparent 64%);
-  -webkit-mask:url('assets/tgc-logo-full-colour-transparent.png') center/contain no-repeat;
-  mask:url('assets/tgc-logo-full-colour-transparent.png') center/contain no-repeat;
+  -webkit-mask:url('assets/tgc-logo-full-colour-crisp-4x.png') center/contain no-repeat;
+  mask:url('assets/tgc-logo-full-colour-crisp-4x.png') center/contain no-repeat;
   transform:translateX(-78%);
   opacity:0;
   mix-blend-mode:screen;
@@ -1899,8 +1965,41 @@ button.flow-node{
 .brand-intro-scroll i::after{content:"";position:absolute;inset:0;background:#b9162f;transform:translateY(-100%);animation:tgcScrollCue 1.8s ease-in-out infinite}
 @keyframes tgcScrollCue{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
 
+
+/* Refined intro pacing: the hero begins rising before the logo completes its handoff,
+   preventing an empty scroll interval and keeping useful information close. */
+.brand-intro-sticky::before{
+  content:"";
+  position:absolute;
+  left:50%;top:43%;
+  width:min(78vw,1040px);
+  aspect-ratio:1.7;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 46%,transparent 72%);
+  border:1px solid rgba(218,165,40,.08);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.78);
+  opacity:calc(.72 - var(--intro-progress) * .42);
+  pointer-events:none;
+  z-index:2;
+}
+.brand-intro-sticky::after{
+  height:26vh;
+  background:linear-gradient(180deg,transparent 0%,rgba(246,242,234,.88) 58%,#f6f2ea 100%);
+}
+.home-page .hero{
+  position:relative;
+  z-index:24;
+  margin-top:-110px;
+  border-radius:48px 48px 0 0;
+  box-shadow:0 -22px 60px rgba(21,23,27,.055);
+  border-top:1px solid rgba(255,255,255,.82);
+}
+.brand-intro-scroll{bottom:42px}
+.brand-morph-visual{filter:drop-shadow(0 28px 38px rgba(21,23,27,.14))}
+
 @media(max-width:900px){
-  .brand-intro{height:148vh;min-height:820px}
+  .brand-intro{height:calc(100svh + 250px);min-height:760px}
   .brand-intro-sticky{min-height:620px}
   .home-page .site-header .header-inner,
   .home-page .site-header.scrolled .header-inner{width:min(calc(100% - 22px),760px)!important;height:72px!important;padding:0 12px 0 14px!important;border-radius:21px!important}
@@ -1911,10 +2010,10 @@ button.flow-node{
   .brand-intro-copy{top:calc(43% + min(37vw,270px))}
   .brand-intro-orbit{width:92vw}
   .brand-intro-orbit-two{width:75vw}
-  .home-page .hero{padding-top:112px!important}
+  .home-page .hero{padding-top:112px!important;margin-top:-72px;border-radius:34px 34px 0 0}
 }
 @media(max-width:600px){
-  .brand-intro{height:138vh;min-height:760px}
+  .brand-intro{height:calc(100svh + 190px);min-height:700px}
   .brand-intro-sticky{min-height:590px}
   .brand-intro-copy{top:calc(43% + min(40vw,220px));width:92vw}
   .brand-intro-signature{font-size:10px;letter-spacing:.16em}
@@ -1931,4 +2030,211 @@ button.flow-node{
 @media(prefers-reduced-motion:reduce){
   .brand-morph-highlight,.brand-intro-scroll i::after{animation:none!important}
   .js.motion-ready .brand-morph-visual,.js.motion-ready.page-ready .brand-morph-visual{opacity:1!important;transform:none!important;transition:none!important}
+}
+
+/* =========================================================
+   CRISP PREMIUM INTRO — FINAL VISUAL OVERRIDE
+   Keeps the brand reveal modern and purposeful while ensuring
+   useful homepage content appears quickly and the official logo
+   stays sharp at large sizes.
+   ========================================================= */
+.brand-intro{
+  height:calc(100svh + 260px)!important;
+  min-height:780px!important;
+  background:#f7f3eb!important;
+}
+.brand-intro-sticky{
+  min-height:680px!important;
+  background:
+    radial-gradient(circle at 14% 12%,rgba(228,177,48,.19),transparent 28%),
+    radial-gradient(circle at 88% 73%,rgba(183,25,45,.10),transparent 31%),
+    linear-gradient(135deg,#fcfbf8 0%,#f7f3eb 54%,#f2ede4 100%)!important;
+}
+.brand-intro-sticky::before{
+  left:50%!important;
+  top:44%!important;
+  width:min(82vw,1080px)!important;
+  aspect-ratio:1.82!important;
+  transform:translate(-50%,-50%) scale(calc(1 - var(--intro-progress) * .018))!important;
+  border-radius:54px!important;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.74),rgba(255,255,255,.30)),
+    radial-gradient(circle at 28% 18%,rgba(228,177,48,.08),transparent 36%),
+    radial-gradient(circle at 80% 80%,rgba(183,25,45,.045),transparent 34%)!important;
+  border:1px solid rgba(255,255,255,.88)!important;
+  box-shadow:
+    0 34px 90px rgba(37,31,21,.075),
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 0 -1px 0 rgba(151,118,49,.045)!important;
+  opacity:calc(.94 - var(--intro-progress) * .50)!important;
+  backdrop-filter:blur(10px) saturate(1.04);
+}
+.brand-intro-sticky::after{
+  height:24vh!important;
+  background:linear-gradient(180deg,transparent 0%,rgba(247,243,235,.80) 45%,#f7f3eb 100%)!important;
+}
+.brand-intro-grid{
+  background-size:64px 64px!important;
+  opacity:calc(.20 - var(--intro-progress) * .10)!important;
+  mask-image:linear-gradient(to bottom,transparent 0,#000 10%,#000 79%,transparent 100%)!important;
+}
+.brand-intro-glow{
+  filter:blur(96px)!important;
+  opacity:calc(.44 - var(--intro-progress) * .28)!important;
+}
+.brand-intro-glow-gold{left:-12vw!important;top:-16vw!important;background:rgba(226,174,38,.23)!important}
+.brand-intro-glow-red{right:-15vw!important;bottom:-21vw!important;background:rgba(181,25,43,.105)!important}
+.brand-intro-orbit{
+  top:44%!important;
+  width:min(72vw,940px)!important;
+  border-color:rgba(201,151,34,.105)!important;
+  opacity:calc(.56 - var(--intro-progress) * .43)!important;
+}
+.brand-intro-orbit-two{width:min(58vw,760px)!important;border-color:rgba(185,22,47,.065)!important}
+.brand-intro-orbit i{width:6px!important;height:6px!important;box-shadow:0 0 0 6px rgba(217,163,38,.075),0 0 18px rgba(217,163,38,.22)!important}
+.brand-intro-orbit i:nth-child(3),.brand-intro-orbit-two i:nth-child(2){box-shadow:0 0 0 6px rgba(185,22,47,.06),0 0 18px rgba(185,22,47,.16)!important}
+
+.brand-morph{
+  top:43.5%!important;
+  max-width:630px;
+  contain:layout paint style;
+}
+.brand-morph-visual{
+  inset:0!important;
+  transform:none!important;
+  perspective:none!important;
+  transform-style:flat!important;
+  filter:none!important;
+}
+.brand-morph-visual::before{
+  left:10%!important;
+  right:10%!important;
+  bottom:0!important;
+  height:14%!important;
+  background:rgba(31,27,21,.14)!important;
+  filter:blur(34px)!important;
+  transform:translateY(22px) scaleX(.84)!important;
+  opacity:.42!important;
+}
+.brand-morph-depth{display:none!important}
+.brand-morph-main{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  transform:none!important;
+  filter:none!important;
+  backface-visibility:visible!important;
+  image-rendering:auto!important;
+  -webkit-font-smoothing:antialiased;
+}
+.brand-morph-highlight{
+  opacity:0!important;
+  mix-blend-mode:normal!important;
+  background:linear-gradient(108deg,transparent 39%,rgba(255,255,255,.58) 48%,rgba(241,186,48,.16) 52%,transparent 61%)!important;
+}
+.js.motion-ready .brand-morph-visual{
+  opacity:0!important;
+  transform:translate3d(0,12px,0) scale(.985)!important;
+}
+.js.motion-ready.page-ready .brand-morph-visual{
+  opacity:1!important;
+  transform:translate3d(0,0,0) scale(1)!important;
+  transition:opacity .72s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)!important;
+}
+.js.motion-ready.page-ready .brand-morph-highlight{animation:tgcIntroShine .9s .6s cubic-bezier(.22,1,.36,1) 1 both!important}
+
+.brand-intro-copy{
+  top:calc(43.5% + min(25vw,292px))!important;
+  width:min(88vw,760px)!important;
+}
+.brand-intro-signature{font-size:clamp(12px,.92vw,14px)!important;letter-spacing:.205em!important;color:#9b6700!important}
+.brand-intro-services{margin-top:11px!important;font-size:clamp(10px,.76vw,12px)!important;letter-spacing:.145em!important;color:rgba(21,23,27,.55)!important}
+.brand-intro-scroll{bottom:28px!important;gap:8px!important;color:rgba(21,23,27,.44)!important;font-size:10px!important}
+.brand-intro-scroll i{height:30px!important}
+
+.home-page .hero{
+  margin-top:-120px!important;
+  padding-top:148px!important;
+  border-radius:44px 44px 0 0!important;
+  box-shadow:0 -26px 70px rgba(28,25,20,.055)!important;
+  background:linear-gradient(135deg,#fbf9f4 0%,#f2ece1 100%)!important;
+}
+
+/* High-density logo rendering throughout the public interface. */
+.brand-logo-full,.about-logo-plate img,.footer-logo-plate img{
+  image-rendering:auto!important;
+  filter:none!important;
+  backface-visibility:visible!important;
+}
+.home-page .site-header .brand-logo-stage{
+  box-shadow:0 6px 18px rgba(21,23,27,.065),inset 0 1px 0 rgba(255,255,255,.98)!important;
+}
+
+@media(max-width:900px){
+  .brand-intro{height:calc(100svh + 210px)!important;min-height:720px!important}
+  .brand-intro-sticky{min-height:620px!important}
+  .brand-intro-sticky::before{width:min(94vw,820px)!important;border-radius:38px!important}
+  .brand-morph{max-width:520px!important}
+  .brand-intro-copy{top:calc(43% + min(35vw,250px))!important}
+  .home-page .hero{margin-top:-92px!important;padding-top:126px!important;border-radius:34px 34px 0 0!important}
+}
+@media(max-width:600px){
+  .brand-intro{height:calc(100svh + 150px)!important;min-height:650px!important}
+  .brand-intro-sticky{min-height:570px!important}
+  .brand-intro-sticky::before{width:94vw!important;aspect-ratio:1.28!important;border-radius:28px!important}
+  .brand-morph{max-width:88vw!important;top:40.5%!important}
+  .brand-intro-copy{top:calc(40.5% + min(38vw,205px))!important}
+  .brand-intro-scroll{bottom:17px!important}
+  .home-page .hero{margin-top:-72px!important;padding-top:106px!important;border-radius:28px 28px 0 0!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .brand-morph-highlight{display:none!important}
+  .js.motion-ready .brand-morph-visual,.js.motion-ready.page-ready .brand-morph-visual{opacity:1!important;transform:none!important}
+}
+
+
+/* =========================================================
+   CRISP OFFICIAL LOGO — AUTHORITATIVE FINAL OVERRIDE
+   Uses one high-density official asset. Dimensionality comes
+   from the surrounding surfaces, never from distorting the mark.
+   ========================================================= */
+.brand-logo-stage{
+  transform:none!important;
+  transform-style:flat!important;
+  perspective:none!important;
+  will-change:auto!important;
+}
+.brand-logo-stage::after,
+.brand-logo-light,
+.brand-logo-compact{display:none!important}
+.brand-logo-full{
+  display:block!important;
+  width:86%!important;
+  opacity:1!important;
+  transform:translate(-50%,-50%)!important;
+  filter:none!important;
+  backface-visibility:visible!important;
+  image-rendering:auto!important;
+}
+.brand-morph-visual{
+  perspective:none!important;
+  transform-style:flat!important;
+  filter:none!important;
+}
+.brand-morph-main{
+  transform:none!important;
+  filter:none!important;
+  backface-visibility:visible!important;
+  image-rendering:auto!important;
+}
+.brand-morph-highlight,
+.brand-morph-depth{display:none!important}
+.about-logo-plate img,
+.footer-logo-plate img{
+  filter:none!important;
+  transform:none!important;
+  image-rendering:auto!important;
 }
