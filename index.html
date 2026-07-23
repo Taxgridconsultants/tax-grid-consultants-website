@@ -38,7 +38,7 @@
     "areaServed": {"@type": "Country", "name": "Mauritius"}
   }
   </script>
-  <link rel="stylesheet" href="styles.css?v=tgc-intro-flow-1">
+  <link rel="stylesheet" href="styles.css?v=tgc-logo-reveal-1">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body class="home-page">
@@ -47,11 +47,15 @@
   <header class="site-header" data-header>
     <div class="shell header-inner">
       <a class="brand" href="#top" aria-label="Tax Grid Consultants home">
-        <img src="assets/tgc-logo-full-colour-transparent.png" width="709" height="438" decoding="async" alt="Tax Grid Consultants Limited">
+        <span class="brand-logo-stage" aria-hidden="true">
+          <img class="brand-logo-full" src="assets/tgc-logo-full-colour-transparent.png" width="709" height="438" decoding="async" alt="">
+          <img class="brand-logo-compact" src="assets/apple-touch-icon.png" width="180" height="180" decoding="async" alt="">
+          <span class="brand-logo-light"></span>
+        </span>
         <span class="brand-intro-lockup" aria-hidden="true">
           <strong>PRECISION · COMPLIANCE · GROWTH</strong>
-          <small data-i18n="heroLabel">ACCOUNTING · TAX · PAYROLL · ADVISORY</small>
         </span>
+        <span class="sr-only">Tax Grid Consultants Limited</span>
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
@@ -86,7 +90,35 @@
   </header>
 
   <main id="main">
-    <section class="hero" id="top">
+    <section class="brand-intro" id="top" aria-label="Tax Grid Consultants introduction" data-brand-intro>
+      <div class="brand-intro-sticky">
+        <div class="brand-intro-grid" aria-hidden="true"></div>
+        <div class="brand-intro-glow brand-intro-glow-gold" aria-hidden="true"></div>
+        <div class="brand-intro-glow brand-intro-glow-red" aria-hidden="true"></div>
+        <div class="brand-intro-orbit brand-intro-orbit-one" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="brand-intro-orbit brand-intro-orbit-two" aria-hidden="true"><i></i><i></i></div>
+
+        <div class="brand-morph" data-brand-morph aria-hidden="true">
+          <div class="brand-morph-visual">
+            <img class="brand-morph-depth" src="assets/tgc-logo-full-colour-transparent.png" width="709" height="438" alt="" decoding="sync">
+            <img class="brand-morph-main" src="assets/tgc-logo-full-colour-transparent.png" width="709" height="438" alt="" decoding="sync">
+            <span class="brand-morph-highlight"></span>
+          </div>
+        </div>
+
+        <div class="brand-intro-copy" data-brand-intro-copy>
+          <p class="brand-intro-signature" data-i18n="introSignature">PRECISION · COMPLIANCE · GROWTH</p>
+          <p class="brand-intro-services" data-i18n="introServices">ACCOUNTING · TAX · PAYROLL · ADVISORY</p>
+        </div>
+
+        <div class="brand-intro-scroll" data-brand-intro-scroll>
+          <span data-i18n="introScroll">Scroll to explore</span>
+          <i aria-hidden="true"></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero" id="hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
       <div class="hero-glow hero-glow-two" aria-hidden="true"></div>

@@ -2,7 +2,7 @@ const content = {
   en: {
     languageName: 'English', htmlLang: 'en', flowAria:'Financial information moves from records to decisions',
     static: {
-      skip:'Skip to content', openMenu:'Open menu', navServices:'Services', navWhy:'Why Tax Grid', navAbout:'About', navContact:'Contact', book:'Request a consultation',
+      skip:'Skip to content', openMenu:'Open menu', navServices:'Services', navWhy:'Why Tax Grid', navAbout:'About', navContact:'Contact', book:'Request a consultation', introSignature:'PRECISION · COMPLIANCE · GROWTH', introServices:'ACCOUNTING · TAX · PAYROLL · ADVISORY', introScroll:'Scroll to explore',
       heroLabel:'ACCOUNTING · TAX · PAYROLL · ADVISORY', heroTitle:'Clear numbers.<br>Controlled obligations.<br><em>Better decisions.</em>', heroLead:'Tax Grid Consultants connects accounting, tax, payroll and reporting so businesses in Mauritius can stay organised, meet their responsibilities and understand their financial position.', exploreServices:'Explore our services', heroNote:'Professional support designed around the way your business actually works.',
       engineInput:'BUSINESS RECORDS', engineAccounting:'ACCOUNTING', enginePayroll:'PAYROLL', engineTax:'TAX', engineOutput:'CLEAR FINANCIAL VIEW', engineResult:'Organised. Visible. Useful.',
       trustMauritius:'Mauritius-focused support', trustConnected:'Accounting, tax and payroll connected', trustConfidential:'Confidential handling', trustXero:'Xero Partner',
@@ -50,7 +50,7 @@ const content = {
   fr: {
     languageName: 'Français', htmlLang: 'fr', flowAria:'Les informations financières évoluent des dossiers vers les décisions',
     static: {
-      skip:'Aller au contenu', openMenu:'Ouvrir le menu', navServices:'Services', navWhy:'Pourquoi Tax Grid', navAbout:'À propos', navContact:'Contact', book:'Demander une consultation',
+      skip:'Aller au contenu', openMenu:'Ouvrir le menu', navServices:'Services', navWhy:'Pourquoi Tax Grid', navAbout:'À propos', navContact:'Contact', book:'Demander une consultation', introSignature:'PRÉCISION · CONFORMITÉ · CROISSANCE', introServices:'COMPTABILITÉ · FISCALITÉ · PAIE · CONSEIL', introScroll:'Faites défiler pour découvrir',
       heroLabel:'COMPTABILITÉ · FISCALITÉ · PAIE · CONSEIL', heroTitle:'Des chiffres clairs.<br>Des obligations maîtrisées.<br><em>De meilleures décisions.</em>', heroLead:'Tax Grid Consultants relie comptabilité, fiscalité, paie et rapports de gestion afin d’aider les entreprises à Maurice à rester organisées, respecter leurs obligations et comprendre leur situation financière.', exploreServices:'Découvrir nos services', heroNote:'Un accompagnement professionnel conçu autour du fonctionnement réel de votre entreprise.',
       engineInput:'DOSSIERS DE L’ENTREPRISE', engineAccounting:'COMPTABILITÉ', enginePayroll:'PAIE', engineTax:'FISCALITÉ', engineOutput:'VISION FINANCIÈRE CLAIRE', engineResult:'Organisé. Visible. Utile.',
       trustMauritius:'Accompagnement axé sur Maurice', trustConnected:'Comptabilité, fiscalité et paie connectées', trustConfidential:'Traitement confidentiel', trustXero:'Partenaire Xero',
@@ -98,7 +98,7 @@ const content = {
   mfe: {
     languageName: 'Kreol Morisien', htmlLang: 'mfe', flowAria:'Lenformasion finansier avanse depi dosie ziska desizion',
     static: {
-      skip:'Al direk lor konteni', openMenu:'Ouver meni', navServices:'Servis', navWhy:'Kifer Tax Grid', navAbout:'Lor nou', navContact:'Kontak', book:'Demann enn konsiltasion',
+      skip:'Al direk lor konteni', openMenu:'Ouver meni', navServices:'Servis', navWhy:'Kifer Tax Grid', navAbout:'Lor nou', navContact:'Kontak', book:'Demann enn konsiltasion', introSignature:'PREZISION · KONFORMITE · KWASANS', introServices:'KONTABILITE · TAX · LAPEY · KONSEY', introScroll:'Desann pou dekouver',
       heroLabel:'KONTABILITE · TAX · LAPEY · KONSEY', heroTitle:'Bann sif kler.<br>Bann lobligasion sou kontrol.<br><em>Bann meyer desizion.</em>', heroLead:'Tax Grid Consultants konekte kontabilite, tax, lapey ek rapor zestion pou ed bann lantrepriz Moris reste organize, respekte zot bann lobligasion ek konpran zot pozision finansier.', exploreServices:'Dekouver nou servis', heroNote:'Enn sipor profesionel adapte ar fason ou biznes fonksione.',
       engineInput:'DOSIE BIZNES', engineAccounting:'KONTABILITE', enginePayroll:'LAPEY', engineTax:'TAX', engineOutput:'ENN VIZION FINANSIER KLER', engineResult:'Organize. Vizib. Itil.',
       trustMauritius:'Sipor axe lor Moris', trustConnected:'Kontabilite, tax ek lapey konekte', trustConfidential:'Tretman konfidansiel', trustXero:'Partener Xero',
@@ -458,8 +458,106 @@ qsa('.primary-nav a,.header-actions a').forEach(link=>link.addEventListener('cli
 }));
 
 const header=qs('[data-header]');
-function updateHeader(){ header.classList.toggle('scrolled',window.scrollY>88); }
+const isHomePage=document.body.classList.contains('home-page');
+const brandIntro=qs('[data-brand-intro]')||qs('.brand-intro');
+const brandMorph=qs('[data-brand-morph]');
+const brandIntroCopy=qs('[data-brand-intro-copy]');
+const brandIntroScroll=qs('[data-brand-intro-scroll]');
+const headerLogoTarget=qs('.site-header .brand-logo-stage');
+
+function clamp(value,min,max){ return Math.min(max,Math.max(min,value)); }
+function mix(from,to,progress){ return from+(to-from)*progress; }
+function smoothstep(value){ const t=clamp(value,0,1); return t*t*(3-2*t); }
+
+let introMetrics=null;
+let introTarget=0;
+let introCurrent=0;
+let introFrame=0;
+
+function measureBrandIntro(){
+  if(!brandIntro || !brandMorph || !headerLogoTarget) return;
+  const viewportWidth=window.innerWidth;
+  const viewportHeight=window.innerHeight;
+  const isMobile=viewportWidth<=720;
+  const baseWidth=Math.min(viewportWidth*(isMobile ? .78 : .46),isMobile?430:610);
+  brandMorph.style.width=`${baseWidth}px`;
+  const targetRect=headerLogoTarget.getBoundingClientRect();
+  const startX=viewportWidth/2;
+  const startY=viewportHeight*(isMobile ? .43 : .44);
+  introMetrics={
+    range:Math.max(1,brandIntro.offsetHeight-viewportHeight),
+    baseWidth,
+    startX,
+    startY,
+    targetX:targetRect.left+targetRect.width/2,
+    targetY:targetRect.top+targetRect.height/2,
+    targetScale:Math.max(.08,targetRect.width/baseWidth)
+  };
+}
+
+function applyBrandIntro(progress){
+  if(!isHomePage || !brandIntro || !brandMorph || !header || !introMetrics) return;
+  const p=clamp(progress,0,1);
+  const move=smoothstep((p-.12)/.76);
+  const copyOut=smoothstep((p-.12)/.32);
+  const cueOut=smoothstep(p/.22);
+  const headerIn=smoothstep((p-.62)/.24);
+  const handoff=smoothstep((p-.86)/.10);
+  const target=introMetrics;
+  const x=mix(0,target.targetX-target.startX,move);
+  const y=mix(0,target.targetY-target.startY,move);
+  const scale=mix(1,target.targetScale,move);
+  const tilt=mix(0,-1.1,move);
+  brandMorph.style.setProperty('--morph-x',`${x.toFixed(2)}px`);
+  brandMorph.style.setProperty('--morph-y',`${y.toFixed(2)}px`);
+  brandMorph.style.setProperty('--morph-scale',scale.toFixed(5));
+  brandMorph.style.setProperty('--morph-rotate',`${tilt.toFixed(2)}deg`);
+  brandMorph.style.setProperty('--morph-opacity',(1-handoff).toFixed(3));
+  brandIntro.style.setProperty('--intro-progress',p.toFixed(4));
+  brandIntro.style.setProperty('--intro-copy-opacity',(1-copyOut).toFixed(3));
+  brandIntro.style.setProperty('--intro-copy-y',`${mix(0,-16,copyOut).toFixed(2)}px`);
+  brandIntro.style.setProperty('--intro-scroll-opacity',(1-cueOut).toFixed(3));
+  header.style.setProperty('--intro-header-opacity',headerIn.toFixed(3));
+  header.style.setProperty('--header-logo-opacity',handoff.toFixed(3));
+  header.classList.toggle('intro-visible',headerIn>.04);
+  header.classList.toggle('intro-complete',p>.96);
+  header.style.pointerEvents=headerIn>.28?'auto':'none';
+}
+
+function animateBrandIntro(){
+  introFrame=0;
+  const delta=introTarget-introCurrent;
+  introCurrent+=delta*.095;
+  if(Math.abs(delta)<.00055) introCurrent=introTarget;
+  applyBrandIntro(introCurrent);
+  if(introCurrent!==introTarget) introFrame=requestAnimationFrame(animateBrandIntro);
+}
+
+function updateHeader(){
+  if(!header) return;
+  if(!isHomePage || !brandIntro || !brandMorph){
+    header.classList.toggle('scrolled',window.scrollY>40);
+    return;
+  }
+  if(!introMetrics) measureBrandIntro();
+  const range=introMetrics?.range||1;
+  introTarget=clamp(window.scrollY/range,0,1);
+  if(reducedMotion) introCurrent=introTarget;
+  if(!introFrame) introFrame=requestAnimationFrame(animateBrandIntro);
+  header.classList.toggle('scrolled',window.scrollY>range+40);
+}
+
 window.addEventListener('scroll',updateHeader,{passive:true});
+window.addEventListener('resize',()=>{
+  introMetrics=null;
+  measureBrandIntro();
+  updateHeader();
+},{passive:true});
+window.addEventListener('load',()=>{
+  measureBrandIntro();
+  updateHeader();
+},{once:true});
+measureBrandIntro();
 updateHeader();
 
 document.documentElement.classList.add('motion-ready');

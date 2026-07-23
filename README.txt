@@ -47,3 +47,10 @@ HOMEPAGE PRESENTATION + CONNECTED FLOW
 - Refined five-stage information flow: Records → Accounting → Obligations → Reporting → Decisions
 - Each flow stage is clickable, keyboard accessible and supported by concise explanatory copy
 - Automatic stage progression stops respectfully when the visitor interacts
+
+
+FINAL BRAND INTRO MORPH
+- Homepage opens with a full-screen Tax Grid Consultants logo presentation.
+- The same official logo scales and travels smoothly into the compact header while scrolling.
+- The existing hero remains intact and follows immediately after the brand introduction.
+- Legal pages retain the normal compact header.

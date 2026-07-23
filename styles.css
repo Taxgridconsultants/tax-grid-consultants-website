@@ -1376,3 +1376,559 @@ button.flow-node{
 @media(prefers-reduced-motion:reduce){
   .home-page .site-header,.home-page .site-header .header-inner,.home-page .site-header .brand,.home-page .site-header .brand img,.brand-intro-lockup,.flow-line>span{transition:none!important}
 }
+
+/* =========================================================
+   FINAL HOMEPAGE BRAND REVEAL
+   Large dimensional Tax Grid identity that condenses smoothly
+   into a compact favicon-style navigation mark on scroll.
+   ========================================================= */
+.home-page .site-header{
+  --header-height:122px;
+  --header-top:16px;
+  --header-radius:31px;
+  --header-shadow-y:30px;
+  --header-shadow-blur:78px;
+  --header-shadow-alpha:.13;
+  --brand-width:425px;
+  --logo-stage-w:154px;
+  --logo-stage-h:94px;
+  --logo-radius:22px;
+  --logo-tilt-x:2.4deg;
+  --logo-tilt-y:-2.1deg;
+  --logo-depth-y:9px;
+  --logo-depth-blur:24px;
+  --full-logo-opacity:1;
+  --compact-logo-opacity:0;
+  --signature-opacity:1;
+  --signature-width:245px;
+  --signature-shift:0px;
+  --nav-scale:1;
+  --control-height:54px;
+  padding-top:var(--header-top);
+  will-change:padding-top;
+}
+.home-page .site-header .header-inner{
+  width:min(calc(100% - 44px),1420px);
+  height:var(--header-height);
+  padding:0 20px 0 24px;
+  gap:32px;
+  border-radius:var(--header-radius);
+  background:linear-gradient(112deg,rgba(255,255,255,.965),rgba(252,249,242,.91));
+  border:1px solid rgba(255,255,255,.92);
+  box-shadow:
+    0 var(--header-shadow-y) var(--header-shadow-blur) rgba(20,22,26,var(--header-shadow-alpha)),
+    0 2px 10px rgba(20,22,26,.045),
+    inset 0 1px 0 rgba(255,255,255,.99);
+  overflow:hidden;
+  transition:background .35s ease,border-color .35s ease;
+  will-change:height,border-radius,box-shadow;
+}
+.home-page .site-header .header-inner::before{
+  left:30px;
+  right:30px;
+  opacity:.88;
+  background:linear-gradient(90deg,transparent 0%,var(--gold) 16%,rgba(199,25,45,.58) 51%,rgba(213,155,34,.43) 76%,transparent 100%);
+}
+.home-page .site-header .brand{
+  width:var(--brand-width);
+  min-width:var(--brand-width);
+  height:100%;
+  display:flex;
+  align-items:center;
+  gap:22px;
+  padding:0;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+  overflow:visible;
+  transform:none;
+  will-change:width,min-width;
+}
+.home-page .site-header .brand::before,
+.home-page .site-header .brand::after{display:none!important}
+.brand-logo-stage{
+  position:relative;
+  flex:0 0 auto;
+  width:var(--logo-stage-w);
+  height:var(--logo-stage-h);
+  display:grid;
+  place-items:center;
+  border-radius:var(--logo-radius);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.985),rgba(247,242,232,.86));
+  border:1px solid rgba(21,23,27,.07);
+  box-shadow:
+    0 var(--logo-depth-y) var(--logo-depth-blur) rgba(21,23,27,.105),
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 0 -1px 0 rgba(213,155,34,.10);
+  transform:perspective(900px) rotateX(var(--logo-tilt-x)) rotateY(var(--logo-tilt-y)) translateZ(0);
+  transform-style:preserve-3d;
+  overflow:hidden;
+  isolation:isolate;
+  will-change:width,height,transform,border-radius,box-shadow;
+}
+.brand-logo-stage::before{
+  content:"";
+  position:absolute;
+  inset:7px;
+  border-radius:calc(var(--logo-radius) - 7px);
+  border:1px solid rgba(213,155,34,.14);
+  pointer-events:none;
+  opacity:.85;
+}
+.brand-logo-stage::after{
+  content:"";
+  position:absolute;
+  inset:-45% -80%;
+  background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.68) 48%,rgba(240,183,53,.25) 52%,transparent 66%);
+  transform:translateX(-58%) rotate(8deg);
+  opacity:0;
+  pointer-events:none;
+}
+.js.motion-ready.page-ready .home-page .brand-logo-stage::after,
+.home-page.js.motion-ready.page-ready .brand-logo-stage::after{
+  animation:tgcLogoLightPass 1.15s .68s cubic-bezier(.22,1,.36,1) 1 both;
+}
+@keyframes tgcLogoLightPass{
+  0%{opacity:0;transform:translateX(-58%) rotate(8deg)}
+  18%{opacity:.52}
+  70%{opacity:.24}
+  100%{opacity:0;transform:translateX(58%) rotate(8deg)}
+}
+.brand-logo-full,
+.brand-logo-compact{
+  position:absolute;
+  inset:50% auto auto 50%;
+  height:auto;
+  object-fit:contain;
+  transform:translate(-50%,-50%) translateZ(18px);
+  image-rendering:auto;
+  backface-visibility:hidden;
+  transition:none!important;
+}
+.brand-logo-full{
+  width:84%;
+  opacity:var(--full-logo-opacity);
+  filter:drop-shadow(0 8px 12px rgba(21,23,27,.12));
+}
+.brand-logo-compact{
+  width:78%;
+  opacity:var(--compact-logo-opacity);
+  filter:drop-shadow(0 4px 8px rgba(21,23,27,.08));
+}
+.home-page .brand-intro-lockup{
+  width:var(--signature-width);
+  max-width:var(--signature-width);
+  padding-left:22px;
+  opacity:var(--signature-opacity);
+  transform:translateX(var(--signature-shift));
+  overflow:hidden;
+  white-space:nowrap;
+  will-change:width,max-width,opacity,transform;
+}
+.home-page .brand-intro-lockup strong{
+  display:block;
+  font-size:10px;
+  line-height:1.25;
+  letter-spacing:.16em;
+  color:var(--gold-deep);
+}
+.home-page .site-menu,
+.home-page .primary-nav,
+.home-page .header-actions{
+  transform:scale(var(--nav-scale));
+  transform-origin:center;
+  will-change:transform;
+}
+.home-page .language-button,
+.home-page .header-cta{
+  min-height:var(--control-height);
+  height:var(--control-height);
+}
+.home-page .header-cta{padding-inline:22px}
+.home-page .site-header.scrolled .header-inner{
+  background:rgba(255,255,255,.97);
+  border-color:rgba(21,23,27,.085);
+}
+.home-page .hero{padding-top:196px}
+
+/* The logo reveal itself settles before the hero begins. */
+.js.motion-ready .home-page .brand-logo-stage,
+.home-page.js.motion-ready .brand-logo-stage{
+  opacity:0;
+  transform:perspective(900px) rotateX(5deg) rotateY(-4deg) translateY(8px) scale(.965);
+}
+.js.motion-ready.page-ready .home-page .brand-logo-stage,
+.home-page.js.motion-ready.page-ready .brand-logo-stage{
+  opacity:1;
+  transform:perspective(900px) rotateX(var(--logo-tilt-x)) rotateY(var(--logo-tilt-y)) translateY(0) scale(1);
+  transition:opacity .72s cubic-bezier(.22,1,.36,1),transform .88s cubic-bezier(.22,1,.36,1);
+}
+
+@media(max-width:1180px){
+  .home-page .site-header{
+    --header-height:92px;
+    --brand-width:126px;
+    --logo-stage-w:108px;
+    --logo-stage-h:72px;
+    --signature-opacity:0;
+    --signature-width:0px;
+  }
+  .home-page .brand-intro-lockup{display:none}
+  .home-page .hero{padding-top:166px}
+}
+@media(max-width:900px){
+  .home-page .site-header{
+    --header-height:72px!important;
+    --header-top:10px!important;
+    --header-radius:21px!important;
+    --brand-width:98px!important;
+    --logo-stage-w:84px!important;
+    --logo-stage-h:58px!important;
+    --logo-tilt-x:0deg!important;
+    --logo-tilt-y:0deg!important;
+    --logo-depth-y:4px!important;
+    --logo-depth-blur:10px!important;
+    --full-logo-opacity:1!important;
+    --compact-logo-opacity:0!important;
+  }
+  .home-page .site-header .header-inner{height:72px!important;width:min(calc(100% - 22px),760px)!important;padding:0 12px 0 14px!important}
+  .home-page .hero{padding-top:138px}
+}
+@media(max-width:480px){
+  .home-page .site-header{
+    --header-height:66px!important;
+    --header-top:8px!important;
+    --header-radius:18px!important;
+    --brand-width:84px!important;
+    --logo-stage-w:72px!important;
+    --logo-stage-h:52px!important;
+  }
+  .home-page .site-header .header-inner{height:66px!important;width:calc(100% - 14px)!important;padding-left:10px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .brand-logo-stage::after{animation:none!important}
+  .js.motion-ready .home-page .brand-logo-stage,
+  .home-page.js.motion-ready .brand-logo-stage{opacity:1!important;transform:none!important}
+}
+
+/* Precision fixes for the reveal lockup */
+.home-page .site-header .brand{
+  flex:0 0 var(--brand-width);
+  max-width:var(--brand-width);
+}
+.home-page .brand-logo-stage .brand-logo-full,
+.home-page .brand-logo-stage .brand-logo-compact{
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  right:auto!important;
+  bottom:auto!important;
+  height:auto!important;
+  max-width:none!important;
+  margin:0!important;
+  transform:translate(-50%,-50%) translateZ(18px)!important;
+}
+.home-page .brand-logo-stage .brand-logo-full{width:84%!important;opacity:var(--full-logo-opacity)!important}
+.home-page .brand-logo-stage .brand-logo-compact{width:78%!important;opacity:var(--compact-logo-opacity)!important}
+.home-page .brand-intro-lockup{flex:0 0 var(--signature-width)}
+
+
+/* =========================================================
+   FINAL BRAND INTRO MORPH
+   The homepage opens as a premium Tax Grid Consultants brand
+   presentation. The same official logo then travels, scales and
+   hands off into the normal compact header as the visitor scrolls.
+   ========================================================= */
+.home-page .site-header{
+  --intro-header-opacity:0;
+  --header-logo-opacity:0;
+  padding-top:10px!important;
+  opacity:var(--intro-header-opacity)!important;
+  transform:translate3d(0,calc((1 - var(--intro-header-opacity)) * -14px),0)!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  transition:none!important;
+  will-change:opacity,transform;
+}
+.home-page .site-header .header-inner,
+.home-page .site-header.scrolled .header-inner{
+  width:min(calc(100% - 36px),1180px)!important;
+  height:74px!important;
+  padding:0 12px 0 18px!important;
+  gap:28px!important;
+  border-radius:22px!important;
+  background:rgba(255,255,255,.965)!important;
+  border:1px solid rgba(21,23,27,.075)!important;
+  box-shadow:0 16px 46px rgba(22,24,28,.095),inset 0 1px 0 rgba(255,255,255,.98)!important;
+  backdrop-filter:blur(22px) saturate(1.08)!important;
+  overflow:visible!important;
+}
+.home-page .site-header .header-inner::before,
+.home-page .site-header.scrolled .header-inner::before{
+  left:22px!important;
+  right:22px!important;
+  opacity:.64!important;
+}
+.home-page .site-header .brand,
+.home-page .site-header.scrolled .brand{
+  width:108px!important;
+  min-width:108px!important;
+  max-width:108px!important;
+  flex:0 0 108px!important;
+  gap:0!important;
+  overflow:visible!important;
+}
+.home-page .site-header .brand-logo-stage,
+.home-page .site-header.scrolled .brand-logo-stage{
+  width:90px!important;
+  height:58px!important;
+  border-radius:15px!important;
+  opacity:var(--header-logo-opacity)!important;
+  transform:none!important;
+  box-shadow:0 5px 14px rgba(21,23,27,.075),inset 0 1px 0 rgba(255,255,255,.98)!important;
+  transition:none!important;
+}
+.home-page .site-header .brand-logo-stage::after{display:none!important}
+.home-page .site-header .brand-logo-full{
+  display:block!important;
+  width:84%!important;
+  opacity:1!important;
+  filter:none!important;
+}
+.home-page .site-header .brand-logo-compact{display:none!important}
+.home-page .brand-intro-lockup{display:none!important}
+.home-page .site-menu,
+.home-page .primary-nav,
+.home-page .header-actions{transform:none!important}
+.home-page .language-button,
+.home-page .header-cta{height:48px!important;min-height:48px!important}
+.home-page .hero{padding-top:126px!important}
+
+.brand-intro{
+  --intro-progress:0;
+  --intro-copy-opacity:1;
+  --intro-copy-y:0px;
+  --intro-scroll-opacity:1;
+  position:relative;
+  height:166vh;
+  min-height:980px;
+  background:#f6f2ea;
+  isolation:isolate;
+}
+.brand-intro-sticky{
+  position:sticky;
+  top:0;
+  height:100vh;
+  min-height:700px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle at 18% 18%,rgba(221,169,44,.13),transparent 32%),
+    radial-gradient(circle at 82% 70%,rgba(190,29,45,.075),transparent 34%),
+    linear-gradient(135deg,#fbfaf7 0%,#f6f2ea 56%,#f1ede5 100%);
+}
+.brand-intro-sticky::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:18vh;
+  background:linear-gradient(180deg,transparent,#f6f2ea 88%);
+  pointer-events:none;
+  z-index:8;
+}
+.brand-intro-grid{
+  position:absolute;
+  inset:0;
+  opacity:calc(.29 - var(--intro-progress) * .15);
+  background-image:
+    linear-gradient(rgba(21,23,27,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(21,23,27,.045) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 82%,transparent 100%);
+}
+.brand-intro-glow{
+  position:absolute;
+  width:46vw;
+  aspect-ratio:1;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:calc(.48 - var(--intro-progress) * .30);
+  pointer-events:none;
+}
+.brand-intro-glow-gold{left:-13vw;top:-20vw;background:rgba(222,168,32,.21)}
+.brand-intro-glow-red{right:-17vw;bottom:-24vw;background:rgba(166,19,41,.11)}
+.brand-intro-orbit{
+  position:absolute;
+  left:50%;
+  top:44%;
+  width:min(70vw,920px);
+  aspect-ratio:1.7;
+  border:1px solid rgba(206,151,26,.14);
+  border-radius:50%;
+  transform:translate(-50%,-50%) rotate(-8deg) scale(calc(1 - var(--intro-progress) * .05));
+  opacity:calc(.75 - var(--intro-progress) * .60);
+}
+.brand-intro-orbit-two{width:min(55vw,720px);transform:translate(-50%,-50%) rotate(12deg) scale(calc(1 - var(--intro-progress) * .04));border-color:rgba(193,27,45,.09)}
+.brand-intro-orbit i{
+  position:absolute;
+  width:8px;height:8px;border-radius:50%;
+  background:#d9a326;
+  box-shadow:0 0 0 7px rgba(217,163,38,.10),0 0 24px rgba(217,163,38,.35);
+}
+.brand-intro-orbit i:nth-child(1){left:10%;top:40%}
+.brand-intro-orbit i:nth-child(2){right:15%;top:23%}
+.brand-intro-orbit i:nth-child(3){right:28%;bottom:11%;background:#b9162f;box-shadow:0 0 0 7px rgba(185,22,47,.08),0 0 24px rgba(185,22,47,.24)}
+.brand-intro-orbit-two i:nth-child(1){left:21%;bottom:8%}
+.brand-intro-orbit-two i:nth-child(2){right:8%;top:47%;background:#b9162f}
+
+.brand-morph{
+  --morph-x:0px;
+  --morph-y:0px;
+  --morph-scale:1;
+  --morph-rotate:0deg;
+  --morph-opacity:1;
+  position:absolute;
+  left:50%;
+  top:44%;
+  aspect-ratio:709/438;
+  transform:translate3d(calc(-50% + var(--morph-x)),calc(-50% + var(--morph-y)),0) scale(var(--morph-scale)) rotate(var(--morph-rotate));
+  transform-origin:center;
+  opacity:var(--morph-opacity);
+  z-index:12;
+  will-change:transform,opacity;
+}
+.brand-morph-visual{
+  position:absolute;
+  inset:0;
+  transform-style:preserve-3d;
+  perspective:1200px;
+  filter:drop-shadow(0 24px 34px rgba(21,23,27,.12));
+}
+.brand-morph-visual::before{
+  content:"";
+  position:absolute;
+  left:8%;right:8%;bottom:2%;height:18%;
+  border-radius:50%;
+  background:rgba(21,23,27,.18);
+  filter:blur(28px);
+  transform:translateY(26px) scaleX(.88);
+  opacity:.55;
+}
+.brand-morph-depth,
+.brand-morph-main{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;object-fit:contain;
+  backface-visibility:hidden;
+}
+.brand-morph-depth{
+  transform:translate3d(4px,6px,-6px) scale(.997);
+  filter:brightness(0) saturate(0);
+  opacity:.105;
+}
+.brand-morph-main{
+  transform:translateZ(18px);
+  filter:drop-shadow(0 8px 12px rgba(21,23,27,.055));
+}
+.brand-morph-highlight{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(110deg,transparent 33%,rgba(255,255,255,.82) 46%,rgba(245,190,58,.28) 51%,transparent 64%);
+  -webkit-mask:url('assets/tgc-logo-full-colour-transparent.png') center/contain no-repeat;
+  mask:url('assets/tgc-logo-full-colour-transparent.png') center/contain no-repeat;
+  transform:translateX(-78%);
+  opacity:0;
+  mix-blend-mode:screen;
+  pointer-events:none;
+}
+.js.motion-ready.page-ready .brand-morph-highlight{animation:tgcIntroShine 1.25s .72s cubic-bezier(.22,1,.36,1) 1 both}
+@keyframes tgcIntroShine{
+  0%{opacity:0;transform:translateX(-78%)}
+  18%{opacity:.74}
+  72%{opacity:.28}
+  100%{opacity:0;transform:translateX(78%)}
+}
+.js.motion-ready .brand-morph-visual{opacity:0;transform:perspective(1200px) rotateX(5deg) rotateY(-4deg) translateY(18px) scale(.94)}
+.js.motion-ready.page-ready .brand-morph-visual{opacity:1;transform:perspective(1200px) rotateX(0) rotateY(0) translateY(0) scale(1);transition:opacity .78s cubic-bezier(.22,1,.36,1),transform 1.05s cubic-bezier(.22,1,.36,1)}
+
+.brand-intro-copy{
+  position:absolute;
+  left:50%;
+  top:calc(44% + min(26vw,31vh));
+  transform:translate3d(-50%,var(--intro-copy-y),0);
+  width:min(90vw,780px);
+  text-align:center;
+  opacity:var(--intro-copy-opacity);
+  z-index:11;
+  pointer-events:none;
+  will-change:opacity,transform;
+}
+.brand-intro-signature{
+  margin:0;
+  color:#a66e00;
+  font-size:clamp(12px,1vw,15px);
+  line-height:1.35;
+  letter-spacing:.22em;
+  font-weight:800;
+}
+.brand-intro-services{
+  margin:13px 0 0;
+  color:rgba(21,23,27,.58);
+  font-size:clamp(10px,.82vw,13px);
+  letter-spacing:.16em;
+  font-weight:700;
+}
+.brand-intro-scroll{
+  position:absolute;
+  left:50%;bottom:34px;
+  display:grid;justify-items:center;gap:10px;
+  transform:translateX(-50%);
+  color:rgba(21,23,27,.48);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  opacity:var(--intro-scroll-opacity);
+  z-index:15;
+  will-change:opacity;
+}
+.brand-intro-scroll i{display:block;width:1px;height:36px;background:linear-gradient(#d7a226,transparent);position:relative;overflow:hidden}
+.brand-intro-scroll i::after{content:"";position:absolute;inset:0;background:#b9162f;transform:translateY(-100%);animation:tgcScrollCue 1.8s ease-in-out infinite}
+@keyframes tgcScrollCue{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
+
+@media(max-width:900px){
+  .brand-intro{height:148vh;min-height:820px}
+  .brand-intro-sticky{min-height:620px}
+  .home-page .site-header .header-inner,
+  .home-page .site-header.scrolled .header-inner{width:min(calc(100% - 22px),760px)!important;height:72px!important;padding:0 12px 0 14px!important;border-radius:21px!important}
+  .home-page .site-header .brand,
+  .home-page .site-header.scrolled .brand{width:100px!important;min-width:100px!important;max-width:100px!important;flex-basis:100px!important}
+  .home-page .site-header .brand-logo-stage,
+  .home-page .site-header.scrolled .brand-logo-stage{width:84px!important;height:58px!important}
+  .brand-intro-copy{top:calc(43% + min(37vw,270px))}
+  .brand-intro-orbit{width:92vw}
+  .brand-intro-orbit-two{width:75vw}
+  .home-page .hero{padding-top:112px!important}
+}
+@media(max-width:600px){
+  .brand-intro{height:138vh;min-height:760px}
+  .brand-intro-sticky{min-height:590px}
+  .brand-intro-copy{top:calc(43% + min(40vw,220px));width:92vw}
+  .brand-intro-signature{font-size:10px;letter-spacing:.16em}
+  .brand-intro-services{font-size:9px;letter-spacing:.11em;line-height:1.6}
+  .brand-intro-scroll{bottom:24px;font-size:9px}
+  .brand-intro-grid{background-size:48px 48px}
+  .home-page .site-header .header-inner,
+  .home-page .site-header.scrolled .header-inner{width:calc(100% - 14px)!important;height:66px!important;border-radius:18px!important;padding-left:10px!important}
+  .home-page .site-header .brand,
+  .home-page .site-header.scrolled .brand{width:86px!important;min-width:86px!important;max-width:86px!important;flex-basis:86px!important}
+  .home-page .site-header .brand-logo-stage,
+  .home-page .site-header.scrolled .brand-logo-stage{width:72px!important;height:52px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .brand-morph-highlight,.brand-intro-scroll i::after{animation:none!important}
+  .js.motion-ready .brand-morph-visual,.js.motion-ready.page-ready .brand-morph-visual{opacity:1!important;transform:none!important;transition:none!important}
+}
